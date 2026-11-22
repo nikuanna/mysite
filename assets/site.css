@@ -147,6 +147,24 @@ ul{padding:0;list-style:none}
 .footer{background:var(--wine-deep);color:var(--on-dark-muted);font-size:13px;border-top:1px solid var(--line-dark)}
 .footer .wrap{display:flex;justify-content:space-between;gap:20px;padding-top:28px;padding-bottom:28px}
 
+/* ---------- Social icons ---------- */
+.hero-cta{align-items:center}
+.icon-row{display:flex;flex-wrap:wrap;gap:10px;margin-left:6px}
+.icon-row a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(42,18,24,.22);color:var(--wine);transition:background .3s,color .3s,border-color .3s,transform .35s var(--ease)}
+.icon-row a:hover{background:var(--wine);border-color:var(--wine);color:var(--cream);transform:translateY(-2px)}
+.icon-row svg{width:19px;height:19px}
+.icon-row-sm{margin:0;gap:8px}
+.icon-row-sm a{width:36px;height:36px;border-color:var(--line-dark);color:var(--on-dark-muted)}
+.icon-row-sm a:hover{background:var(--blush);border-color:var(--blush);color:var(--wine-deep)}
+.icon-row-sm svg{width:16px;height:16px}
+.socials{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,3vw,40px);margin-top:52px}
+.socials a{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--on-dark-muted);font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .3s}
+.social-ico{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-dark);color:var(--blush);transition:background .35s,color .35s,border-color .35s,transform .45s var(--ease)}
+.social-ico svg{width:28px;height:28px}
+.socials a:hover{color:var(--on-dark)}
+.socials a:hover .social-ico{background:var(--blush);border-color:var(--blush);color:var(--wine-deep);transform:translateY(-4px)}
+.footer .wrap{align-items:center}
+
 /* ---------- Reveal ---------- */
 .js .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .js .reveal.in{opacity:1;transform:none}
@@ -181,7 +199,12 @@ ul{padding:0;list-style:none}
   .xp-item{grid-template-columns:1fr;padding:34px 0}
   .xp-list{grid-column:auto}
   .card{padding:34px 26px 38px}
-  .contact-links .btn{width:100%;justify-content:center}
+  .icon-row{margin-left:0;width:100%}
+  .icon-row-sm{width:auto;justify-content:center}
+  .socials{gap:20px 14px}
+  .socials li{width:calc(33.33% - 10px)}
+  .social-ico{width:64px;height:64px}
+  .social-ico svg{width:24px;height:24px}
   .footer .wrap{flex-direction:column;align-items:center;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){

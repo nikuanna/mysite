@@ -15,6 +15,8 @@ OG_IMG = BASE + '/assets/img/og-cover.jpg'
 LINKEDIN = 'https://www.linkedin.com/in/anna-nikulina-cbdo/'
 TG_PERSONAL = 'https://t.me/Anna_Niku'
 TG_CHANNEL = 'https://t.me/STRATEGYNikulina'
+YOUTUBE = 'https://www.youtube.com/@STRATEGYNikulina'
+RUTUBE = 'https://rutube.ru/channel/30327202'
 
 ICONS = {
     'arrow': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -22,6 +24,8 @@ ICONS = {
     'building': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 21V5l8-3 8 3v16M4 21h16M9 9h.01M15 9h.01M9 13h.01M15 13h.01M10 21v-4h4v4"/></svg>',
     'spark': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg>',
     'in': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM10 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>',
+    'yt': '<svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg>',
+    'rt': '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.6 17V7.2h4.5a2.8 2.8 0 0 1 0 5.6H8.6M12.5 12.8l3 4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="7" r="1.4" fill="currentColor"/></svg>',
     'tg': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.24 1.07-.87 1.33-1.76.83l-4.87-3.59-2.35 2.26c-.26.26-.48.48-.98.48l.35-4.96 9.03-8.16c.39-.35-.09-.54-.61-.2L6.36 13.1l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54L20.5 2.85c.87-.32 1.63.2 1.4 1.45z"/></svg>',
 }
 
@@ -61,7 +65,9 @@ CONTENT = {
         ],
         'ct_eyebrow': 'Контакты', 'ct_title': 'Контакты для <b>профессиональных</b> запросов',
         'ct_sub': 'Напишите в LinkedIn или Telegram. Отвечаю лично.',
-        'links': [('in', 'LinkedIn', 'Anna Nikulina', LINKEDIN, 'btn-blush'), ('tg', 'Telegram', '@Anna_Niku', TG_PERSONAL, 'btn-ghost'), ('tg', 'Telegram-канал', 'STRATEGY', TG_CHANNEL, 'btn-ghost')],
+        'socials_title': 'Мои каналы и соцсети',
+        'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Написать в Telegram: @Anna_Niku', TG_PERSONAL),
+                  ('tg', 'Канал', 'Telegram-канал STRATEGY', TG_CHANNEL), ('yt', 'YouTube', 'YouTube-канал STRATEGY', YOUTUBE), ('rt', 'RuTube', 'RuTube-канал', RUTUBE)],
         'footer_left': '© 2026 Анна Никулина', 'footer_right': 'Независимый директор · Венчурный инвестор',
     },
     'en': {
@@ -99,7 +105,9 @@ CONTENT = {
         ],
         'ct_eyebrow': 'Contact', 'ct_title': 'For <b>professional</b> inquiries',
         'ct_sub': 'Reach out on LinkedIn or Telegram. I reply personally.',
-        'links': [('in', 'LinkedIn', 'Anna Nikulina', LINKEDIN, 'btn-blush'), ('tg', 'Telegram', '@Anna_Niku', TG_PERSONAL, 'btn-ghost'), ('tg', 'Telegram Channel', 'STRATEGY · in Russian', TG_CHANNEL, 'btn-ghost')],
+        'socials_title': 'Channels &amp; social media',
+        'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Message on Telegram: @Anna_Niku', TG_PERSONAL),
+                  ('tg', 'Channel', 'Telegram channel STRATEGY (in Russian)', TG_CHANNEL), ('yt', 'YouTube', 'YouTube channel STRATEGY (in Russian)', YOUTUBE), ('rt', 'RuTube', 'RuTube channel (in Russian)', RUTUBE)],
         'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Independent Director · Venture Investor',
     },
 }
@@ -123,8 +131,11 @@ def page(c):
                  % (i + 1, t, lis(items)) for i, (t, items) in enumerate(c['xp']))
     cards = ''.join('<article class="card reveal d%d"><div class="card-icon">%s</div><h3>%s</h3><ul>%s</ul></article>'
                     % (i + 1, ICONS[ic], t, lis(items)) for i, (ic, t, items) in enumerate(c['services']))
-    links = ''.join('<a class="btn %s" href="%s" target="_blank" rel="noopener">%s<span>%s<small>%s</small></span></a>'
-                    % (cls, href, ICONS[ic], label, sub) for ic, label, sub, href, cls in c['links'])
+    def a(href, title):
+        return '<a href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s">' % (href, title, title)
+    links = ''.join('<li>%s<span class="social-ico">%s</span><span class="social-label">%s</span></a></li>'
+                    % (a(href, title), ICONS[ic], label) for ic, label, title, href in c['links'])
+    icons = ''.join('<li>%s%s</a></li>' % (a(href, title), ICONS[ic]) for ic, label, title, href in c['links'])
     desc = html.escape(c['description'], quote=True)
     plain_title = html.escape(c['title'], quote=True)
 
@@ -180,7 +191,7 @@ def page(c):
         <p class="hero-lead reveal d2">{c['lead']}</p>
         <div class="hero-cta reveal d3">
           <a class="btn btn-wine" href="#contact">{c['cta_main']}{ICONS['arrow']}</a>
-          <a class="btn btn-outline" href="{TG_CHANNEL}" target="_blank" rel="noopener">{c['cta_second']}</a>
+          <ul class="icon-row" aria-label="{c['socials_title']}">{icons}</ul>
         </div>
       </div>
       <div class="photo reveal d2" data-speed="-0.08">
@@ -227,13 +238,13 @@ def page(c):
       <div class="eyebrow reveal">{c['ct_eyebrow']}</div>
       <h2 class="h2 reveal d1">{c['ct_title']}</h2>
       <p class="sub reveal d2">{c['ct_sub']}</p>
-      <div class="contact-links reveal d3">{links}</div>
+      <ul class="socials reveal d3" aria-label="{c['socials_title']}">{links}</ul>
     </div>
   </section>
 </main>
 
 <footer class="footer">
-  <div class="wrap"><span>{c['footer_left']}</span><span>{c['footer_right']}</span></div>
+  <div class="wrap"><span>{c['footer_left']}</span><ul class="icon-row icon-row-sm" aria-label="{c['socials_title']}">{icons}</ul><span>{c['footer_right']}</span></div>
 </footer>
 
 <script src="../assets/site.js" defer></script>
