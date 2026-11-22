@@ -67,7 +67,7 @@ CONTENT = {
         'ct_sub': 'Напишите в LinkedIn или Telegram. Отвечаю лично.',
         'socials_title': 'Мои каналы и соцсети',
         'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Написать в Telegram: @Anna_Niku', TG_PERSONAL),
-                  ('tg', 'Канал', 'Telegram-канал STRATEGY', TG_CHANNEL), ('yt', 'YouTube', 'YouTube-канал STRATEGY', YOUTUBE), ('rt', 'RuTube', 'RuTube-канал', RUTUBE)],
+                  ('tg', 'Telegram-канал', 'Telegram-канал STRATEGY', TG_CHANNEL, 'канал'), ('yt', 'YouTube', 'YouTube-канал STRATEGY', YOUTUBE), ('rt', 'RuTube', 'RuTube-канал', RUTUBE)],
         'footer_left': '© 2026 Анна Никулина', 'footer_right': 'Независимый директор · Венчурный инвестор',
     },
     'en': {
@@ -107,7 +107,7 @@ CONTENT = {
         'ct_sub': 'Reach out on LinkedIn or Telegram. I reply personally.',
         'socials_title': 'Channels &amp; social media',
         'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Message on Telegram: @Anna_Niku', TG_PERSONAL),
-                  ('tg', 'Channel', 'Telegram channel STRATEGY (in Russian)', TG_CHANNEL), ('yt', 'YouTube', 'YouTube channel STRATEGY (in Russian)', YOUTUBE), ('rt', 'RuTube', 'RuTube channel (in Russian)', RUTUBE)],
+                  ('tg', 'Telegram Channel', 'Telegram channel STRATEGY (in Russian)', TG_CHANNEL, 'channel'), ('yt', 'YouTube', 'YouTube channel STRATEGY (in Russian)', YOUTUBE), ('rt', 'RuTube', 'RuTube channel (in Russian)', RUTUBE)],
         'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Independent Director · Venture Investor',
     },
 }
@@ -134,8 +134,13 @@ def page(c):
     def a(href, title):
         return '<a href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s">' % (href, title, title)
     links = ''.join('<li>%s<span class="social-ico">%s</span><span class="social-label">%s</span></a></li>'
-                    % (a(href, title), ICONS[ic], label) for ic, label, title, href in c['links'])
-    icons = ''.join('<li>%s%s</a></li>' % (a(href, title), ICONS[ic]) for ic, label, title, href in c['links'])
+                    % (a(l[3], l[2]), ICONS[l[0]], l[1]) for l in c['links'])
+    def icon(l):
+        word = l[4] if len(l) > 4 else ''
+        if word:
+            return '<li class="has-word">%s%s<span>%s</span></a></li>' % (a(l[3], l[2]), ICONS[l[0]], word)
+        return '<li>%s%s</a></li>' % (a(l[3], l[2]), ICONS[l[0]])
+    icons = ''.join(icon(l) for l in c['links'])
     desc = html.escape(c['description'], quote=True)
     plain_title = html.escape(c['title'], quote=True)
 

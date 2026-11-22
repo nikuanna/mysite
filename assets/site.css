@@ -153,6 +153,8 @@ ul{padding:0;list-style:none}
 .icon-row a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(42,18,24,.22);color:var(--wine);transition:background .3s,color .3s,border-color .3s,transform .35s var(--ease)}
 .icon-row a:hover{background:var(--wine);border-color:var(--wine);color:var(--cream);transform:translateY(-2px)}
 .icon-row svg{width:19px;height:19px}
+.icon-row .has-word a{width:auto;padding:0 16px 0 14px;border-radius:999px;display:flex;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.icon-row-sm .has-word a{padding:0 13px 0 11px;font-size:11px}
 .icon-row-sm{margin:0;gap:8px}
 .icon-row-sm a{width:36px;height:36px;border-color:var(--line-dark);color:var(--on-dark-muted)}
 .icon-row-sm a:hover{background:var(--blush);border-color:var(--blush);color:var(--wine-deep)}
@@ -204,6 +206,7 @@ ul{padding:0;list-style:none}
   .socials{gap:20px 14px}
   .socials li{width:calc(33.33% - 10px)}
   .social-ico{width:64px;height:64px}
+  .socials a{font-size:11px;letter-spacing:.04em;white-space:nowrap}
   .social-ico svg{width:24px;height:24px}
   .footer .wrap{flex-direction:column;align-items:center;text-align:center}
 }
