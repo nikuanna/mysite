@@ -1,0 +1,32 @@
+name: Backup site
+
+# Every change pushed to the site is saved as a permanent GitHub Release
+# with a ZIP archive of the full site. Also runs monthly as a safety net.
+on:
+  push:
+  schedule:
+    - cron: "17 3 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create ZIP and release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STAMP=$(date -u +%Y-%m-%d_%H%M)
+          SHORT=${GITHUB_SHA::7}
+          TAG="backup-${STAMP}-${SHORT}"
+          ZIP="site-backup-${STAMP}-${SHORT}.zip"
+          zip -qr "$ZIP" . -x ".git/*"
+          MSG=$(git log -1 --pretty=%s)
+          gh release create "$TAG" "$ZIP" \
+            --target "$GITHUB_SHA" \
+            --title "Backup ${STAMP} UTC" \
+            --notes "Full site backup. Change: ${MSG}. To restore, download the ZIP and ask Claude to restore from it."

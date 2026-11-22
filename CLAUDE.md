@@ -9,6 +9,7 @@
 - `assets/img/` — изображения. `assets/styles/` — CSS конструктора.
 - `index.html` в корне — редирект на `annanikulina/`.
 - `.github/workflows/pages.yml` — автодеплой на GitHub Pages при каждом push.
+- `.github/workflows/backup.yml` — бэкап: при каждом push и раз в месяц создаёт GitHub Release с ZIP всего сайта.
 
 ## Как вносить правки
 1. Правь `annanikulina/index.html`, затем обнови перевод в `tools/build_en.py` и запусти `python3 tools/build_en.py .`. Обе версии должны оставаться синхронными.
@@ -18,3 +19,5 @@
 ## Важно
 - Скрипты и виджет T-Bank удалены, страница полностью статическая. Иконка: `assets/img/favicon.svg`.
 - Пользователь просит не использовать длинные тире в текстах.
+- После каждой правки обязательно commit + push (это и сохранение, и запуск бэкапа). Не оставляй изменения незакоммиченными.
+- Откат: любую прошлую версию можно вернуть через git history или ZIP из Releases (`backup-*`).
