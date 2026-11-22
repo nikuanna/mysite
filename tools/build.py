@@ -9,8 +9,7 @@ import html, os, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
 BASE = 'https://nikuanna.github.io/mysite'
-HERO_IMG = '../assets/img/abe75e2c-edbd-4638-9980-d67ab05a6953-13963987.jpeg'
-PORTRAIT = '../assets/img/efe9d02e-f567-4969-929e-4114a5cc8dd8-13960600.jpeg'
+PORTRAIT = '../assets/img/anna-portrait.jpg'  # original photo, never edited
 OG_IMG = BASE + '/assets/img/og-cover.jpg'
 
 LINKEDIN = 'https://www.linkedin.com/in/anna-nikulina-cbdo/'
@@ -42,27 +41,27 @@ CONTENT = {
         'scroll': 'Листайте',
         'stats': [('15+', 'лет управленческого опыта'), ('50+', 'филиалов под управлением'),
                   ('₽2 трлн', 'активы банка из ТОП-10 РФ'), ('10 000+', 'сотрудников в банках, где я работала')],
-        'xp_eyebrow': 'Опыт', 'xp_title': 'Опыт, который <em>работает</em> на результат',
+        'xp_eyebrow': 'Опыт', 'xp_title': 'Опыт, который <b>работает</b> на результат',
         'xp_intro': 'Банковский сектор, предпринимательство, венчурные инвестиции и участие в законотворчестве. Смотрю на бизнес одновременно глазами собственника, инвестора и риск-менеджера.',
         'xp': [
-            ('Предпринимательский опыт B2B | B2C', ['Совладелец российского бренда в сфере красоты и здоровья', 'Сооснователь глобального ИТ-стартапа', 'Ex-основатель FinTech-стартапа в России']),
+            ('Предпринимательский опыт B2B&nbsp;|&nbsp;B2C', ['Совладелец российского бренда в сфере красоты и здоровья', 'Сооснователь глобального ИТ-стартапа', 'Ex-основатель FinTech-стартапа в России']),
             ('Банковский сектор', ['Ex-Управляющий директор в ТОП-10 банках РФ (10+ тыс. сотрудников, активы ₽2 трлн)', 'Создание и управление корпоративными кредитными портфелями (миллиардные объёмы)', 'Эксперт по оценке устойчивости и кредитованию бизнеса и проектов: от МСБ до промышленных гигантов', 'Риск-менеджер с опытом антикризисного управления']),
             ('Инвестор', ['Венчурный инвестор в технологические стартапы ранних стадий (глобальные рынки, успешный экзит)', 'Приглашённый эксперт и член жюри конкурсов стартапов']),
             ('Законодательная деятельность', ['Участие в разработке ФЗ №259 «Об инвестиционных платформах» со стороны бизнеса']),
             ('Управленческий опыт', ['15+ лет опыта в управлении (50+ филиалов, международные команды)', 'Риск-ориентированное и антикризисное управление']),
         ],
-        'band_eyebrow': 'Советы директоров',
-        'band_text': 'Открыта к участию в <em>Советах директоров</em> и <em>Advisory Board</em> частных компаний',
-        'sv_eyebrow': 'Экспертиза', 'sv_title': 'Чем я могу быть <em>полезна</em>',
+        'band_eyebrow': 'Советы директоров', 'band_word': 'Advisory Board',
+        'band_text': 'Открыта к участию в <b>Советах директоров</b> и <b>Advisory Board</b> частных компаний',
+        'sv_eyebrow': 'Экспертиза', 'sv_title': 'Чем я могу быть <b>полезна</b>',
         'sv_intro': 'Работаю с теми, кому важен взгляд со стороны: независимый, системный и основанный на реальном опыте.',
         'services': [
             ('chart', 'Для инвесторов', ['Анализ инвестиционной привлекательности проектов на всех стадиях', 'Оценка рисков и возможностей']),
             ('building', 'Для собственников бизнеса', ['Стратегический консалтинг и поиск точек роста', 'Операционное управление', 'Участие в Советах директоров в роли независимого директора частных компаний']),
             ('spark', 'Для стартапов и бизнеса', ['Экспертное мнение инвестора и менторинг', 'Оценка позиционирования, бизнес-модели и перспектив на любой стадии']),
         ],
-        'ct_eyebrow': 'Контакты', 'ct_title': 'Контакты для <em>профессиональных</em> запросов',
+        'ct_eyebrow': 'Контакты', 'ct_title': 'Контакты для <b>профессиональных</b> запросов',
         'ct_sub': 'Напишите в LinkedIn или Telegram. Отвечаю лично.',
-        'links': [('in', 'LinkedIn', 'Anna Nikulina', LINKEDIN, 'btn-gold'), ('tg', 'Telegram', '@Anna_Niku', TG_PERSONAL, 'btn-ghost'), ('tg', 'Telegram-канал', 'STRATEGY', TG_CHANNEL, 'btn-ghost')],
+        'links': [('in', 'LinkedIn', 'Anna Nikulina', LINKEDIN, 'btn-blush'), ('tg', 'Telegram', '@Anna_Niku', TG_PERSONAL, 'btn-ghost'), ('tg', 'Telegram-канал', 'STRATEGY', TG_CHANNEL, 'btn-ghost')],
         'footer_left': '© 2026 Анна Никулина', 'footer_right': 'Независимый директор · Венчурный инвестор',
     },
     'en': {
@@ -80,27 +79,27 @@ CONTENT = {
         'scroll': 'Scroll',
         'stats': [('15+', 'years of executive leadership'), ('50+', 'branches managed'),
                   ('RUB 2T', 'in assets at a Top 10 Russian bank'), ('10,000+', 'employees at the banks I worked for')],
-        'xp_eyebrow': 'Track Record', 'xp_title': 'Experience that <em>delivers</em> results',
+        'xp_eyebrow': 'Track Record', 'xp_title': 'Experience that <b>delivers</b> results',
         'xp_intro': 'Banking, entrepreneurship, venture investing and policymaking. I look at every business through three lenses at once: owner, investor and risk manager.',
         'xp': [
-            ('Entrepreneurship: B2B | B2C', ['Co-owner of a Russian health &amp; beauty brand', 'Co-founder of a global tech startup', 'Former founder of a fintech startup in Russia']),
+            ('Entrepreneurship: B2B&nbsp;|&nbsp;B2C', ['Co-owner of a Russian health &amp; beauty brand', 'Co-founder of a global tech startup', 'Former founder of a fintech startup in Russia']),
             ('Banking', ['Former Managing Director at Top 10 Russian banks (10,000+ employees, RUB 2 trillion in assets)', 'Built and managed multibillion-ruble corporate loan portfolios', 'Expert in credit risk and financial resilience assessment for businesses and projects, from SMBs to industrial majors', 'Risk manager with a track record in crisis and turnaround management']),
             ('Venture Investing', ['Venture investor in early-stage tech startups (global markets, with a successful exit)', 'Invited expert and judge at startup pitch competitions']),
             ('Policy &amp; Legislation', ['Contributed to drafting Federal Law No.&nbsp;259-FZ on investment platforms (crowdfunding) in Russia, representing the business community']),
             ('Executive Leadership', ['15+ years in executive leadership (50+ branches, international teams)', 'Risk-based and crisis management']),
         ],
-        'band_eyebrow': 'Board Service',
-        'band_text': 'Open to <em>independent board</em> and <em>advisory board</em> roles at privately held companies',
-        'sv_eyebrow': 'Expertise', 'sv_title': 'How I can <em>help</em>',
+        'band_eyebrow': 'Board Service', 'band_word': 'Advisory Board',
+        'band_text': 'Open to <b>independent board</b> and <b>advisory board</b> roles at privately held companies',
+        'sv_eyebrow': 'Expertise', 'sv_title': 'How I can <b>help</b>',
         'sv_intro': 'For those who value an outside perspective: independent, structured and grounded in real-world experience.',
         'services': [
             ('chart', 'For Investors', ['Investment analysis and due diligence for projects at every stage', 'Risk and opportunity assessment']),
             ('building', 'For Business Owners', ['Strategy consulting and identifying growth levers', 'Operational management', 'Board service as an Independent Director at privately held companies']),
             ('spark', 'For Startups &amp; Growing Companies', ['An investor&#8217;s perspective and mentorship', 'Review of positioning, business model and growth prospects at any stage']),
         ],
-        'ct_eyebrow': 'Contact', 'ct_title': 'For <em>professional</em> inquiries',
+        'ct_eyebrow': 'Contact', 'ct_title': 'For <b>professional</b> inquiries',
         'ct_sub': 'Reach out on LinkedIn or Telegram. I reply personally.',
-        'links': [('in', 'LinkedIn', 'Anna Nikulina', LINKEDIN, 'btn-gold'), ('tg', 'Telegram', '@Anna_Niku', TG_PERSONAL, 'btn-ghost'), ('tg', 'Telegram Channel', 'STRATEGY · in Russian', TG_CHANNEL, 'btn-ghost')],
+        'links': [('in', 'LinkedIn', 'Anna Nikulina', LINKEDIN, 'btn-blush'), ('tg', 'Telegram', '@Anna_Niku', TG_PERSONAL, 'btn-ghost'), ('tg', 'Telegram Channel', 'STRATEGY · in Russian', TG_CHANNEL, 'btn-ghost')],
         'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Independent Director · Venture Investor',
     },
 }
@@ -136,7 +135,7 @@ def page(c):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{plain_title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#0d1320">
+<meta name="theme-color" content="#ecc5c6">
 <link rel="canonical" href="{c['url']}">
 <link rel="alternate" hreflang="ru" href="{BASE}/annanikulina/">
 <link rel="alternate" hreflang="en" href="{BASE}/en/">
@@ -154,8 +153,8 @@ def page(c):
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{OG_IMG}">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="../assets/fonts/cormorant-garamond-{'cyrillic' if c['lang'] == 'ru' else 'latin'}-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="{HERO_IMG}">
+<link rel="preload" href="../assets/fonts/inter-tight-{'cyrillic' if c['lang'] == 'ru' else 'latin'}-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="{PORTRAIT}">
 <link rel="stylesheet" href="../assets/site.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -172,27 +171,26 @@ def page(c):
 </header>
 
 <main id="top">
-  <section class="hero on-dark">
-    <div class="hero-bg" data-speed="0.28"><img src="{HERO_IMG}" alt="" fetchpriority="high"></div>
+  <section class="hero">
+    <div class="hero-word" data-speed="0.35" aria-hidden="true">{c['h1_2']}</div>
     <div class="wrap">
-      <div>
+      <div class="hero-text">
         <div class="eyebrow reveal">{c['eyebrow']}</div>
         <h1 class="reveal d1">{c['h1_1']}<span class="l2">{c['h1_2']}</span></h1>
         <p class="hero-lead reveal d2">{c['lead']}</p>
         <div class="hero-cta reveal d3">
-          <a class="btn btn-gold" href="#contact">{c['cta_main']}{ICONS['arrow']}</a>
-          <a class="btn btn-ghost" href="{TG_CHANNEL}" target="_blank" rel="noopener">{c['cta_second']}</a>
+          <a class="btn btn-wine" href="#contact">{c['cta_main']}{ICONS['arrow']}</a>
+          <a class="btn btn-outline" href="{TG_CHANNEL}" target="_blank" rel="noopener">{c['cta_second']}</a>
         </div>
       </div>
-      <div class="portrait reveal d2">
-        <div class="portrait-frame"><img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="336" height="336"></div>
-        <div class="portrait-tag"><b>{c['tag_num']}</b>{c['tag_text']}</div>
+      <div class="photo reveal d2" data-speed="-0.08">
+        <img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="1368" height="2000" fetchpriority="high">
+        <div class="photo-tag"><b>{c['tag_num']}</b>{c['tag_text']}</div>
       </div>
     </div>
-    <div class="scroll-cue" aria-hidden="true">{c['scroll']}<i></i></div>
   </section>
 
-  <section class="stats on-dark" aria-label="Key facts">
+  <section class="stats" aria-label="Key facts">
     <div class="wrap"><ul>{stats}</ul></div>
   </section>
 
@@ -207,7 +205,7 @@ def page(c):
   </section>
 
   <section class="band on-dark">
-    <div class="band-bg" data-speed="0.32"><img src="{HERO_IMG}" alt="" loading="lazy"></div>
+    <div class="band-word-wrap" data-speed="0.3" aria-hidden="true"><div class="band-word">{c['band_word']}</div></div>
     <div class="wrap">
       <div class="eyebrow reveal">{c['band_eyebrow']}</div>
       <p class="band-text reveal d1">{c['band_text']}</p>

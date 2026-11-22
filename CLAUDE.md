@@ -6,9 +6,10 @@
 ## Структура
 - `tools/build.py` — ЕДИНСТВЕННЫЙ источник текстов и разметки. Словарь `CONTENT` содержит обе версии (ru, en). Шаблон страницы в функции `page()`.
 - `annanikulina/index.html`, `en/index.html` — СГЕНЕРИРОВАННЫЕ файлы. Руками не править, пересобирать: `python3 tools/build.py .`
-- `assets/site.css` — дизайн (палитра: ink #0d1320, ivory, gold #c4a473; шрифты Cormorant Garamond + Manrope, лежат в `assets/fonts/`).
+- `assets/site.css` — дизайн. Палитра взята с портрета: пудровый #ecc5c6, бордо #5a1828, тёмное вино #2c0b14, крем #fbf6f3. Шрифт Inter Tight (лежит в `assets/fonts/`). Без арок и антиквы: пользователю они не нравятся.
 - `assets/site.js` — параллакс (`data-speed`), появление блоков, состояние меню.
-- `assets/img/` — фото, `og-cover.jpg` (превью для соцсетей 1200x630), `favicon.svg`.
+- `assets/img/anna-portrait.jpg` — портрет 1368x2000. НЕ редактировать, не обрезать, не перекрашивать файл (требование пользователя).
+- `assets/img/og-cover.jpg` — превью для соцсетей 1200x630, `favicon.svg`.
 - `index.html` в корне — редирект на `annanikulina/`.
 - `.github/workflows/pages.yml` — автодеплой при каждом push.
 - `.github/workflows/backup.yml` — бэкап: при каждом push и раз в месяц GitHub Release с ZIP всего сайта.
@@ -23,4 +24,3 @@
 - Откат: git history или ZIP из Releases (`backup-*`).
 - Пользователь просит не использовать длинные тире в текстах.
 - Не выдумывать факты о пользователе: только подтверждённые данные.
-- Фото-портрет пока 336x336, при замене брать минимум 1000px.
