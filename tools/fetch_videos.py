@@ -103,7 +103,7 @@ def main():
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(new, f, ensure_ascii=False, indent=1)
     for k, v in new.items():
-        log(k, 'total', len(v))
+        log(k, 'total', len(v), 'with thumbnails:', sum(1 for x in v if x.get('thumb')))
         for x in v:
             log('  -', x['id'], '|', x['title'])
 

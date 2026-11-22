@@ -10,6 +10,7 @@
 - `assets/site.js` — параллакс (`data-speed`), появление блоков, состояние меню.
 - `assets/img/anna-portrait.jpg` — портрет 1368x2000. НЕ редактировать, не обрезать, не перекрашивать файл (требование пользователя).
 - `assets/img/og-cover.jpg` — превью для соцсетей 1200x630, `favicon.svg`.
+- Видео: `tools/fetch_videos.py` при каждой сборке на GitHub (и ежедневно) забирает списки роликов в `data/videos.json`: RU-страница показывает RuTube (YouTube в РФ работает с перебоями), EN-страница показывает YouTube. На сайте только полные выпуски (без тизеров и Shorts), ролик открывается во всплывающем плеере. С этого сервера YouTube и RuTube недоступны, список смотреть в логах GitHub Actions.
 - `index.html` в корне — редирект на `annanikulina/`.
 - `.github/workflows/pages.yml` — автодеплой при каждом push.
 - `.github/workflows/backup.yml` — бэкап: при каждом push и раз в месяц GitHub Release с ZIP всего сайта.

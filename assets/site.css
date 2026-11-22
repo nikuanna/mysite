@@ -162,8 +162,20 @@ section[id]{scroll-margin-top:72px}
 .vcard-btn:hover .vcard-thumb img{transform:scale(1.05)}
 .vcard-btn:hover .vcard-play{transform:scale(1.08);background:var(--wine);color:var(--cream)}
 .vcard-btn:focus-visible{outline:2px solid var(--wine);outline-offset:6px;border-radius:6px}
+.vcard-text{display:block}
 .vcard-title{display:block;margin-top:16px;font-size:17px;font-weight:500;line-height:1.4;letter-spacing:-.01em;transition:color .3s}
 .vcard-btn:hover .vcard-title{color:var(--wine)}
+.vcard.is-featured{grid-column:1/-1;margin-bottom:20px}
+.vcard.is-featured .vcard-btn{display:grid;grid-template-columns:1.9fr 1fr;gap:clamp(28px,4vw,56px);align-items:center}
+.vcard.is-featured .vcard-title{font-size:clamp(24px,2.6vw,36px);font-weight:400;line-height:1.15;letter-spacing:-.03em;margin-top:16px}
+.vcard.is-featured .vcard-guest{font-size:16px;margin-top:12px}
+.vcard-badge{display:none}
+.vcard.is-featured .vcard-badge{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wine)}
+.vcard.is-featured .vcard-badge::before{content:"";width:28px;height:1px;background:currentColor}
+.vcard.is-featured .vcard-play{width:84px;height:84px;margin:-42px 0 0 -42px}
+.vcard.is-featured .vcard-play svg{width:30px;height:30px}
+.vcard-guest{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+.vcard-thumb:not(:has(img)){background:linear-gradient(135deg,var(--blush) 0%,var(--blush-deep) 100%)}
 .vactions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:56px}
 .vmodal{width:min(1100px,94vw);max-width:none;padding:0;border:0;background:transparent;overflow:visible}
 .vmodal::backdrop{background:rgba(28,7,13,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
@@ -218,6 +230,7 @@ section[id]{scroll-margin-top:72px}
   .xp-list{grid-column:2}
   .cards{grid-template-columns:1fr}
   .vgrid{grid-template-columns:repeat(2,1fr)}
+  .vcard.is-featured .vcard-btn{grid-template-columns:1.4fr 1fr}
 }
 @media (max-width:560px){
   body{font-size:16px}
@@ -231,6 +244,8 @@ section[id]{scroll-margin-top:72px}
   .xp-list{grid-column:auto}
   .card{padding:34px 26px 38px}
   .vgrid{grid-template-columns:1fr;gap:30px}
+  .vcard.is-featured .vcard-btn{grid-template-columns:1fr;gap:0}
+  .vcard.is-featured{margin-bottom:0}
   .vactions .btn{width:100%;justify-content:center}
   .icon-row{margin-left:0;width:100%}
   .icon-row-sm{width:auto;justify-content:center}
