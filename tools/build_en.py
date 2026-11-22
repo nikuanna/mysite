@@ -68,8 +68,8 @@ for ru, en in HEAD:
 BODY = [
  ['Co-owner of a Russian health &amp; beauty brand', 'Co-founder of a global tech startup', 'Former founder of a fintech startup in Russia'],
  ['Contributed to drafting Federal Law', 'No.&nbsp;259-FZ on investment platforms', '(crowdfunding) in Russia, representing', 'the business community'],
- ['Venture investor in early-stage tech startups', '(global markets, exit-oriented)', 'Invited expert and judge', 'at startup pitch competitions'],
- ['Former senior decision-maker', 'at Top&nbsp;10 Russian banks', '(10,000+ employees, RUB&nbsp;2&nbsp;trillion in assets)',
+ ['Venture investor in early-stage tech startups', '(global markets, with a successful exit)', 'Invited expert and judge', 'at startup pitch competitions'],
+ ['Former Managing Director', 'at Top&nbsp;10 Russian banks', '(10,000+ employees, RUB&nbsp;2&nbsp;trillion in assets)',
   'Built and managed multibillion-ruble', 'corporate loan portfolios',
   'Expert in credit risk and', 'financial resilience assessment', 'for businesses and projects,', 'from SMBs to industrial majors',
   'Risk manager with a track record', 'in crisis and turnaround management'],
