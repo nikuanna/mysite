@@ -5,7 +5,7 @@ Output: annanikulina/index.html (RU) and en/index.html (EN)
 
 All texts live in CONTENT below. Edit them there, then run the script.
 """
-import html, os, sys
+import html, json, os, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
 BASE = 'https://nikuanna.github.io/mysite'
@@ -18,7 +18,20 @@ TG_CHANNEL = 'https://t.me/STRATEGYNikulina'
 YOUTUBE = 'https://www.youtube.com/@STRATEGYNikulina'
 RUTUBE = 'https://rutube.ru/channel/30327202'
 
+def load_videos():
+    path = os.path.join(ROOT, 'data', 'videos.json')
+    try:
+        with open(path, encoding='utf-8') as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {'youtube': [], 'rutube': []}
+
+
+VIDEOS = load_videos()
+
 ICONS = {
+    'play': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
+    'close': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
     'arrow': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
     'chart': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 20h18M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg>',
     'building': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 21V5l8-3 8 3v16M4 21h16M9 9h.01M15 9h.01M9 13h.01M15 13h.01M10 21v-4h4v4"/></svg>',
@@ -35,7 +48,10 @@ CONTENT = {
         'title': 'Анна Никулина | Независимый директор, венчурный инвестор, советник',
         'description': 'Независимый директор, венчурный инвестор и советник по стратегическому развитию. 15+ лет управленческого опыта в банковском секторе, финтехе и потребительских брендах.',
         'brand': 'А<span>.</span> Никулина',
-        'nav': [('#experience', 'Опыт'), ('#services', 'Экспертиза'), ('#contact', 'Контакты')],
+        'nav': [('#experience', 'Опыт'), ('#services', 'Экспертиза'), ('#videos', 'Видео'), ('#contact', 'Контакты')],
+        'vd_source': 'rutube', 'vd_channel_url': RUTUBE, 'vd_eyebrow': 'Видео',
+        'vd_title': 'Видео о <b>бизнесе</b>', 'vd_intro': 'Мой канал на RuTube. Нажмите на ролик, и он откроется прямо здесь.',
+        'vd_more': 'Показать все видео', 'vd_less': 'Свернуть', 'vd_channel': 'Канал на RuTube', 'vd_close': 'Закрыть',
         'eyebrow': 'Независимый директор · Венчурный инвестор',
         'h1_1': 'Анна', 'h1_2': 'Никулина',
         'lead': 'Предприниматель, <strong>директор по развитию</strong> и <strong>советник по стратегическому развитию</strong>. Помогаю собственникам, инвесторам и стартапам принимать решения, которые выдерживают проверку временем.',
@@ -75,7 +91,10 @@ CONTENT = {
         'title': 'Anna Nikulina | Independent Director, Venture Investor, Strategic Advisor',
         'description': 'Independent director, venture investor and strategic advisor with 15+ years of executive leadership in banking, fintech and consumer brands.',
         'brand': 'A<span>.</span> Nikulina',
-        'nav': [('#experience', 'Track Record'), ('#services', 'Expertise'), ('#contact', 'Contact')],
+        'nav': [('#experience', 'Track Record'), ('#services', 'Expertise'), ('#videos', 'Videos'), ('#contact', 'Contact')],
+        'vd_source': 'youtube', 'vd_channel_url': YOUTUBE, 'vd_eyebrow': 'Videos',
+        'vd_title': 'Videos on <b>business</b>', 'vd_intro': 'My YouTube channel (in Russian). Click any video to play it right here.',
+        'vd_more': 'Show all videos', 'vd_less': 'Show less', 'vd_channel': 'YouTube channel', 'vd_close': 'Close',
         'eyebrow': 'Independent Director · Venture Investor',
         'h1_1': 'Anna', 'h1_2': 'Nikulina',
         'lead': 'Entrepreneur, <strong>Chief Business Development Officer</strong> and <strong>Strategic Advisor</strong>. I help business owners, investors and founders make decisions that stand the test of time.',
@@ -124,7 +143,6 @@ def page(c):
                '<a href="../en/" hreflang="en" lang="en"%s>EN</a></nav>') % (
         ' aria-current="page"' if c['lang'] == 'ru' else '',
         ' aria-current="page"' if c['lang'] == 'en' else '')
-    nav_links = ''.join('<a href="%s">%s</a>' % l for l in c['nav'])
     stats = ''.join('<li class="reveal d%d"><div class="stat-num">%s</div><div class="stat-label">%s</div></li>' % (i, n, t)
                     for i, (n, t) in enumerate(c['stats']))
     xp = ''.join('<article class="xp-item reveal"><div class="xp-num">%02d</div><h3 class="xp-title">%s</h3><ul class="xp-list">%s</ul></article>'
@@ -141,6 +159,36 @@ def page(c):
             return '<li class="has-word">%s%s<span>%s</span></a></li>' % (a(l[3], l[2]), ICONS[l[0]], word)
         return '<li>%s%s</a></li>' % (a(l[3], l[2]), ICONS[l[0]])
     icons = ''.join(icon(l) for l in c['links'])
+    vids = VIDEOS.get(c['vd_source']) or []
+    vcards = ''.join(
+        '<li class="vcard%s"><button type="button" class="vcard-btn" data-embed="%s" data-title="%s">'
+        '<span class="vcard-thumb">%s<span class="vcard-play">%s</span></span>'
+        '<span class="vcard-title">%s</span></button></li>' % (
+            ' is-extra' if i >= 6 else '',
+            html.escape(v['embed'], quote=True), html.escape(v['title'], quote=True),
+            ('<img src="%s" alt="" loading="lazy">' % html.escape(v['thumb'], quote=True)) if v.get('thumb') else '',
+            ICONS['play'], html.escape(v['title']))
+        for i, v in enumerate(vids))
+    more_btn = ('<button type="button" class="btn btn-outline vmore" data-less="%s">%s</button>' % (c['vd_less'], c['vd_more'])) if len(vids) > 6 else ''
+    if vids:
+        video_section = f'''
+  <section class="section videos" id="videos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal"><div class="eyebrow">{c['vd_eyebrow']}</div><h2 class="h2">{c['vd_title']}</h2></div>
+        <p class="reveal d1">{c['vd_intro']}</p>
+      </div>
+      <ul class="vgrid">{vcards}</ul>
+      <div class="vactions">{more_btn}<a class="btn btn-wine" href="{c['vd_channel_url']}" target="_blank" rel="noopener">{c['vd_channel']}{ICONS['arrow']}</a></div>
+    </div>
+  </section>
+  <dialog class="vmodal" aria-label="Video">
+    <div class="vmodal-box"><button type="button" class="vmodal-close" aria-label="{c['vd_close']}">{ICONS['close']}</button>
+    <div class="vmodal-frame"></div><p class="vmodal-title"></p></div>
+  </dialog>'''
+    else:
+        video_section = ''
+    nav_links = ''.join('<a href="%s">%s</a>' % l for l in c['nav'] if l[0] != '#videos' or vids)
     desc = html.escape(c['description'], quote=True)
     plain_title = html.escape(c['title'], quote=True)
 
@@ -238,6 +286,7 @@ def page(c):
     </div>
   </section>
 
+{video_section}
   <section class="section contact on-dark" id="contact">
     <div class="wrap">
       <div class="eyebrow reveal">{c['ct_eyebrow']}</div>

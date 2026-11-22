@@ -1,7 +1,11 @@
 name: Deploy site to GitHub Pages
 
+# Runs on every push, daily (to pick up new YouTube/RuTube videos) and on demand.
+# The video lists are fetched at build time only; nothing is written back to the repository.
 on:
   push:
+  schedule:
+    - cron: "41 4 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,6 +25,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch video lists (YouTube, RuTube)
+        run: |
+          pip install --quiet yt-dlp
+          python3 tools/fetch_videos.py .
+      - name: Build pages
+        run: python3 tools/build.py .
       - uses: actions/configure-pages@v5
       - name: Prepare site
         run: |
