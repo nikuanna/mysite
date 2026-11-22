@@ -1,23 +1,26 @@
 # Сайт Анны Никулиной
 
-Статический сайт-визитка (экспорт из конструктора T-Bank / tb.ru), хостинг на GitHub Pages.
+Персональный сайт (RU + EN), собственный код без конструктора. Хостинг: GitHub Pages.
+Адреса: https://nikuanna.github.io/mysite/annanikulina/ (RU), https://nikuanna.github.io/mysite/en/ (EN).
 
 ## Структура
-- `annanikulina/index.html` — русская версия (основная). Все тексты, ссылки, мета-теги (title, description, og:*) здесь.
-- `en/index.html` — английская версия (американский деловой английский). Генерируется скриптом `tools/build_en.py` из русской страницы: переводы лежат в скрипте.
-- Переключатель RU/EN (`nav.lang-switch`) вставляется скриптом в обе страницы.
-- `assets/img/` — изображения. `assets/styles/` — CSS конструктора.
+- `tools/build.py` — ЕДИНСТВЕННЫЙ источник текстов и разметки. Словарь `CONTENT` содержит обе версии (ru, en). Шаблон страницы в функции `page()`.
+- `annanikulina/index.html`, `en/index.html` — СГЕНЕРИРОВАННЫЕ файлы. Руками не править, пересобирать: `python3 tools/build.py .`
+- `assets/site.css` — дизайн (палитра: ink #0d1320, ivory, gold #c4a473; шрифты Cormorant Garamond + Manrope, лежат в `assets/fonts/`).
+- `assets/site.js` — параллакс (`data-speed`), появление блоков, состояние меню.
+- `assets/img/` — фото, `og-cover.jpg` (превью для соцсетей 1200x630), `favicon.svg`.
 - `index.html` в корне — редирект на `annanikulina/`.
-- `.github/workflows/pages.yml` — автодеплой на GitHub Pages при каждом push.
-- `.github/workflows/backup.yml` — бэкап: при каждом push и раз в месяц создаёт GitHub Release с ZIP всего сайта.
+- `.github/workflows/pages.yml` — автодеплой при каждом push.
+- `.github/workflows/backup.yml` — бэкап: при каждом push и раз в месяц GitHub Release с ZIP всего сайта.
 
 ## Как вносить правки
-1. Правь `annanikulina/index.html`, затем обнови перевод в `tools/build_en.py` и запусти `python3 tools/build_en.py .`. Обе версии должны оставаться синхронными.
-2. Новые картинки клади в `assets/img/`, подключай путём `../assets/img/<файл>`.
-3. Закоммить и запушь в рабочую ветку: деплой запускается автоматически, сайт обновляется через 1-2 минуты.
+1. Меняй тексты в `CONTENT` в `tools/build.py`, сразу в обеих версиях (RU и EN синхронно; EN: профессиональный американский деловой английский).
+2. `python3 tools/build.py .`
+3. Проверь в браузере (desktop + mobile), затем commit + push. Деплой и бэкап запускаются автоматически.
 
 ## Важно
-- Скрипты и виджет T-Bank удалены, страница полностью статическая. Иконка: `assets/img/favicon.svg`.
+- После каждой правки обязательно commit + push. Не оставляй изменения незакоммиченными.
+- Откат: git history или ZIP из Releases (`backup-*`).
 - Пользователь просит не использовать длинные тире в текстах.
-- После каждой правки обязательно commit + push (это и сохранение, и запуск бэкапа). Не оставляй изменения незакоммиченными.
-- Откат: любую прошлую версию можно вернуть через git history или ZIP из Releases (`backup-*`).
+- Не выдумывать факты о пользователе: только подтверждённые данные.
+- Фото-портрет пока 336x336, при замене брать минимум 1000px.
