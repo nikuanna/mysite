@@ -56,7 +56,7 @@ def sentence_case(title):
 
 # English titles for the EN page (keyed by YouTube video id) and Latin spelling of guest names.
 EN_TITLES = {
-    'cvLB6uWxBnk': 'Secondary liability of board members and owners',
+    'cvLB6uWxBnk': 'Subsidiary liability of board members and owners',
     'VuuB7uzdvwo': 'The robot revolution',
     'n84INQQOz0Q': 'Home as a service',
     'jWN5XPts_jQ': 'Behind the scenes of M&A',
