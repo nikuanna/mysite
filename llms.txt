@@ -26,16 +26,16 @@ Official personal website. Facts below are provided by Anna Nikulina herself.
 - Advisory Board Member at a global tech company
 
 ### Banking
-- 13+ years as a senior decision-maker at Russian banks, including top-10 lenders: Promsvyazbank (PSB), MDM Bank, Uralsib, and SDM Bank. Focus on large and mid-market corporate lending and credit risk management
+- 13+ years as a senior decision-maker in large and mid-market corporate lending and credit risk management at Promsvyazbank (PSB), MDM Bank, Uralsib, and SDM Bank
 - Managed key processes during bank mergers; rolled out an automated loan origination pipeline as part of digital transformation
 - Oversaw and grew lending operations across 50+ branches
 - Built and managed multibillion-ruble corporate loan portfolios
 - Financial resilience assessment for businesses and projects, from SMBs to major industrial companies
 - Crisis and turnaround management
 
-### Founder Experience: B2B | B2C
+### Founder Experience: B2B | B2C
 - Founder of a Russian fintech startup: a crowdlending platform built from scratch (successfully sold)
-- Revenue-generating global B2B tech startup focused on MENA: a platform for business management and digital transformation. Co‑founder and Chief Business Development Officer, now an Advisory Board Member
+- Revenue-generating global B2B tech startup focused on MENA: a platform for business management and digital transformation. Co-founder and Chief Business Development Officer, now an Advisory Board Member
 - Own nutraceutical brand: Russia’s first anti-aging nutraceutical with a clinically significant concentration of elastin
 
 ### Venture Investing
@@ -80,14 +80,14 @@ Official personal website. Facts below are provided by Anna Nikulina herself.
 - Член Advisory Board глобальной ИТ-компании
 
 ### Банковский сектор
-- 13+ лет ЛПР в банках Промсвязьбанк, МДМ Банк, УРАЛСИБ, СДМ‑Банк в кредитовании крупного и среднего бизнеса и управлении кредитными рисками
+- 13+ лет в роли ЛПР в банках Промсвязьбанк, МДМ Банк, УРАЛСИБ, СДМ-Банк в кредитовании крупного и среднего бизнеса и управлении кредитными рисками
 - Управление процессами при слиянии банков, внедрение кредитного конвейера в рамках цифровой трансформации
 - Курирование и развитие кредитования в 50+ филиалах
 - Создание и управление многомиллиардными корпоративными кредитными портфелями
 - Оценка финансовой устойчивости бизнеса и проектов: от МСБ до крупных промышленных компаний
 - Антикризисное управление
 
-### Опыт основателя B2B | B2C
+### Опыт основателя B2B | B2C
 - Основатель финтех-стартапа в России: краудлендинговая платформа, созданная с нуля (продана)
 - Глобальный B2B ИТ-стартап с выручкой, регион MENA: платформа для управления и цифровой трансформации бизнеса. Сооснователь и директор по развитию, сейчас Advisory Board Member
 - Собственный бренд нутрицевтиков: первый в России anti-age нутрицевтик с клинически значимой концентрацией эластина
@@ -118,5 +118,5 @@ Official personal website. Facts below are provided by Anna Nikulina herself.
 - Дом как сервис (Гость: Артём Бабинов): https://rutube.ru/video/82245c10c63797b9d4839cec6b54728c/
 - За кулисами M&A (Гость: Иван Скавыш): https://rutube.ru/video/9c4bf61b043f1e9871b5e467088dbe60/
 - Стратегия загородной жизни (Гость: Евгений Антифеев): https://rutube.ru/video/722f7eb517eb702874613efbd3f16c28/
-- Искусственный интеллект билет в будущее (Гость: Тимур Эль-Гохари): https://rutube.ru/video/aa2cad4c1103fe543607f4f6108b470c/
+- Искусственный интеллект: билет в будущее (Гость: Тимур Эль-Гохари): https://rutube.ru/video/aa2cad4c1103fe543607f4f6108b470c/
 - Как вывести бизнес в Китай (Гость: Виктор Соковнин): https://rutube.ru/video/4b83cb5bb370456e2c958657fe2ba707/

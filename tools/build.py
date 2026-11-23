@@ -32,6 +32,7 @@ SELF_NAMES = {'анна никулина', 'anna nikulina'}
 
 
 # Words that keep their own spelling in video titles: abbreviations and proper names.
+TITLE_FIXES = {'Искусственный интеллект билет в будущее': 'Искусственный интеллект: билет в будущее'}
 KEEP_CASE = {'сд': 'СД', 'm&a': 'M&A', 'ии': 'ИИ', 'китай': 'Китай', 'китае': 'Китае', 'китая': 'Китая',
              'россия': 'Россия', 'россии': 'России', 'mena': 'MENA', 'ai': 'AI', 'it': 'IT', 'ит': 'ИТ',
              'china': 'China', 'russia': 'Russia', 'uae': 'UAE', 'dubai': 'Dubai'}
@@ -82,7 +83,9 @@ def prepare_videos(vids, lang='ru'):
         if lang == 'en':
             main = EN_TITLES.get(v['id'], main)
             guests = [EN_GUESTS.get(g, g) for g in guests]
-        item = dict(v, main=sentence_case(main.strip()), guest=', '.join(guests))
+        main = sentence_case(main.strip())
+        main = TITLE_FIXES.get(main, main)
+        item = dict(v, main=main, guest=', '.join(guests))
         key = item['main'].lower()
         if key in seen:
             if item['guest'] and not out[seen[key]]['guest']:
@@ -120,7 +123,7 @@ CONTENT = {
         'vd_source': 'rutube', 'vd_channel_url': RUTUBE, 'vd_eyebrow': 'Видео',
         'vd_title': 'Разговоры о <b>бизнесе</b>', 'vd_intro': 'Интервью с предпринимателями и экспертами на моём канале. Нажмите на выпуск, и он откроется прямо здесь.',
         'vd_more': 'Показать все видео', 'vd_less': 'Свернуть', 'vd_channel': 'Канал на RuTube', 'vd_close': 'Закрыть', 'vd_guest': 'Гость:', 'vd_latest': 'Новый выпуск',
-        'eyebrow': 'Независимый директор в СД · Основатель · Венчурный инвестор',
+        'eyebrow': 'Независимый&nbsp;директор&nbsp;в&nbsp;СД · Основатель · Венчурный&nbsp;инвестор',
         'h1_1': 'Анна', 'h1_2': 'Никулина',
         'lead': 'Директор по развитию и советник по стратегическому развитию. Помогаю собственникам, инвесторам и стартапам принимать решения, которые выдерживают проверку временем.',
         'cta_main': 'Связаться', 'cta_second': 'Telegram-канал',
@@ -131,13 +134,13 @@ CONTENT = {
                   ('₽2&nbsp;трлн', 'активы банка из ТОП-10 РФ'), ('10&nbsp;000+', 'сотрудников в банках, где я работала'),
                   ('$1&nbsp;млрд+', 'оценка техстартапов из портфеля'), ('B2B&nbsp;·&nbsp;B2C', 'запуск бизнесов с нуля')],
         'xp_eyebrow': 'Опыт', 'xp_title': 'Опыт, подтверждённый <b>результатами</b>',
-        'xp_intro': '13+ лет в банковском секторе, включая банки ТОП-10 РФ, собственные компании от запуска до экзита, венчурный портфель на глобальных рынках и участие в формировании регулирования финтеха. Смотрю на бизнес одновременно глазами собственника, инвестора и риск-менеджера.',
+        'xp_intro': '13+ лет в банковском секторе, включая банки ТОП-10 РФ; собственные компании от запуска до экзита; венчурный портфель на глобальных рынках; участие в формировании регулирования финтеха. Смотрю на бизнес одновременно глазами собственника, инвестора и риск-менеджера.',
         'xp': [
             ('Корпоративное управление', ['Член Ассоциации независимых директоров (АНД)', 'Курс «Независимый директор в совете директоров», АНД, 2024', 'Член Advisory Board глобальной ИТ-компании']),
-            ('Банковский сектор', ['13+ лет ЛПР в банках Промсвязьбанк, МДМ Банк, УРАЛСИБ, СДМ&#8209;Банк в кредитовании крупного и среднего бизнеса и управлении кредитными рисками', 'Управление процессами при слиянии банков, внедрение кредитного конвейера в рамках цифровой трансформации', 'Курирование и развитие кредитования в 50+ филиалах', 'Создание и управление многомиллиардными корпоративными кредитными портфелями', 'Оценка финансовой устойчивости бизнеса и проектов: от МСБ до крупных промышленных компаний', 'Антикризисное управление']),
-            ('Опыт основателя B2B&nbsp;|&nbsp;B2C', ['Основатель финтех-стартапа в России: краудлендинговая платформа, созданная с нуля (продана)', 'Глобальный B2B ИТ-стартап с выручкой, регион MENA: платформа для управления и цифровой трансформации бизнеса. Сооснователь и директор по развитию, сейчас Advisory Board Member', 'Собственный бренд нутрицевтиков: первый в России anti-age нутрицевтик с клинически значимой концентрацией эластина']),
-            ('Венчурные инвестиции', ['Венчурный инвестор в технологические стартапы ранних стадий на глобальных рынках', 'Оценка компаний портфеля: более $1 млрд', 'В портфельные компании инвестировали или стали их партнёрами Airbus, NASA, NEOM, Barclays и другие', 'Экзит в аэрокосмической отрасли (Aerospace)', 'Приглашённый эксперт и член жюри конкурсов стартапов']),
-            ('Регулирование и GR', ['Взаимодействие с регулятором (Банк России)', 'Участие в разработке Федерального закона № 259-ФЗ «О привлечении инвестиций с использованием инвестиционных платформ» (закон о краудфандинге) со стороны бизнеса, в рамках работы Ассоциации инвестиционных платформ с Банком России']),
+            ('Банковский сектор', ['13+ лет в роли ЛПР в банках Промсвязьбанк, МДМ Банк, УРАЛСИБ, СДМ&#8209;Банк в кредитовании крупного и среднего бизнеса и управлении кредитными рисками', 'Управление процессами при слиянии банков, внедрение кредитного конвейера в рамках цифровой трансформации', 'Курирование и развитие кредитования в 50+ филиалах', 'Создание и управление многомиллиардными корпоративными кредитными портфелями', 'Оценка финансовой устойчивости бизнеса и проектов: от МСБ до крупных промышленных компаний', 'Антикризисное управление']),
+            ('Опыт основателя B2B&nbsp;|&nbsp;B2C', ['Основатель финтех-стартапа в России: краудлендинговая платформа, созданная с нуля (продана)', 'Глобальный B2B ИТ-стартап с выручкой, регион MENA: платформа для управления и цифровой трансформации бизнеса. Сооснователь и директор по развитию, сейчас Advisory Board Member', 'Собственный бренд нутрицевтиков: первый в России anti&#8209;age нутрицевтик с клинически значимой концентрацией эластина']),
+            ('Венчурные инвестиции', ['Венчурный инвестор в технологические стартапы ранних стадий на глобальных рынках', 'Оценка компаний портфеля: более $1&nbsp;млрд', 'В портфельные компании инвестировали или стали их партнёрами Airbus, NASA, NEOM, Barclays и другие', 'Экзит в аэрокосмической отрасли (Aerospace)', 'Приглашённый эксперт и член жюри конкурсов стартапов']),
+            ('Регулирование и GR', ['Взаимодействие с регулятором (Банк&nbsp;России)', 'Участие в разработке Федерального закона № 259-ФЗ «О привлечении инвестиций с использованием инвестиционных платформ» (закон о краудфандинге) со стороны бизнеса, в рамках работы Ассоциации инвестиционных платформ с Банком России']),
             ('Управленческий опыт', ['15+ лет на руководящих позициях, международные команды', 'Риск-ориентированное управление']),
         ],
         'band_eyebrow': 'Советы директоров', 'band_word': 'Advisory Board',
@@ -155,7 +158,7 @@ CONTENT = {
         'socials_title': 'Мои каналы и соцсети',
         'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Написать в Telegram: @Anna_Niku', TG_PERSONAL),
                   ('tg', 'Telegram-канал', 'Telegram-канал STRATEGY', TG_CHANNEL, 'канал'), ('yt', 'YouTube', 'YouTube-канал STRATEGY', YOUTUBE), ('rt', 'RuTube', 'RuTube-канал', RUTUBE)],
-        'footer_left': '© 2026 Анна Никулина', 'footer_right': 'Независимый директор в СД · Основатель · Венчурный инвестор',
+        'footer_left': '© 2026 Анна Никулина', 'footer_right': 'Независимый&nbsp;директор&nbsp;в&nbsp;СД · Основатель · Венчурный&nbsp;инвестор',
     },
     'en': {
         'lang': 'en', 'dir': 'en', 'url': BASE + '/en/',
@@ -171,7 +174,7 @@ CONTENT = {
         'vd_source': 'youtube', 'vd_channel_url': YOUTUBE, 'vd_eyebrow': 'Videos',
         'vd_title': 'Conversations on <b>business</b>', 'vd_intro': 'Interviews with entrepreneurs and experts on my YouTube channel (mostly in Russian). Click any episode to play it right here.',
         'vd_more': 'Show all videos', 'vd_less': 'Show less', 'vd_channel': 'YouTube channel', 'vd_close': 'Close', 'vd_guest': 'Guest:', 'vd_latest': 'Latest episode',
-        'eyebrow': 'Non-Executive Director · Founder · Venture Investor',
+        'eyebrow': 'Non&#8209;Executive&nbsp;Director · Founder · Venture&nbsp;Investor',
         'h1_1': 'Anna', 'h1_2': 'Nikulina',
         'lead': 'Chief Business Development Officer and Strategic Advisor. I help business owners, investors, and founders make decisions that stand the test of time.',
         'cta_main': 'Get in Touch', 'cta_second': 'Telegram Channel',
@@ -185,10 +188,10 @@ CONTENT = {
         'xp_intro': '13+ years in banking, including top-10 Russian banks; companies built from launch to exit; a venture portfolio across global markets; and a hand in shaping Russia&#8217;s fintech regulation. I look at every business through three lenses at once: owner, investor, and risk manager.',
         'xp': [
             ('Corporate Governance', ['Member of the Association of Independent Directors (AID), Russia', 'Independent Board Director program, AID, 2024', 'Advisory Board Member at a global tech company']),
-            ('Banking', ['13+ years as a senior decision-maker at Russian banks, including top-10 lenders: Promsvyazbank (PSB), MDM Bank, Uralsib, and SDM Bank. Focus on large and mid-market corporate lending and credit risk management', 'Managed key processes during bank mergers; rolled out an automated loan origination pipeline as part of digital transformation', 'Oversaw and grew lending operations across 50+ branches', 'Built and managed multibillion-ruble corporate loan portfolios', 'Financial resilience assessment for businesses and projects, from SMBs to major industrial companies', 'Crisis and turnaround management']),
-            ('Founder Experience: B2B&nbsp;|&nbsp;B2C', ['Founder of a Russian fintech startup: a crowdlending platform built from scratch (successfully sold)', 'Revenue-generating global B2B tech startup focused on MENA: a platform for business management and digital transformation. Co&#8209;founder and Chief Business Development Officer, now an Advisory Board Member', 'Own nutraceutical brand: Russia&#8217;s first anti-aging nutraceutical with a clinically significant concentration of elastin']),
-            ('Venture Investing', ['Venture investor in early-stage tech startups across global markets', 'Portfolio companies valued at over $1 billion', 'Portfolio companies have attracted investment or partnerships from Airbus, NASA, NEOM, Barclays, and others', 'Exit in the aerospace sector', 'Guest expert and judge at startup pitch competitions']),
-            ('Regulatory Policy', ['Engagement with the regulator (Bank of Russia)', 'Helped shape Russia&#8217;s crowdfunding law on behalf of the business community, working with the Association of Investment Platforms and the Bank of Russia']),
+            ('Banking', ['13+ years as a senior decision-maker in large and mid-market corporate lending and credit risk management at Promsvyazbank (PSB), MDM Bank, Uralsib, and SDM Bank', 'Managed key processes during bank mergers; rolled out an automated loan origination pipeline as part of digital transformation', 'Oversaw and grew lending operations across 50+ branches', 'Built and managed multibillion-ruble corporate loan portfolios', 'Financial resilience assessment for businesses and projects, from SMBs to major industrial companies', 'Crisis and turnaround management']),
+            ('Founder Experience: B2B&nbsp;|&nbsp;B2C', ['Founder of a Russian fintech startup: a crowdlending platform built from scratch (successfully sold)', 'Revenue-generating global B2B tech startup focused on MENA: a platform for business management and digital transformation. Co&#8209;founder and Chief Business Development Officer, now an Advisory Board Member', 'Own nutraceutical brand: Russia&#8217;s first anti&#8209;aging nutraceutical with a clinically significant concentration of elastin']),
+            ('Venture Investing', ['Venture investor in early-stage tech startups across global markets', 'Portfolio companies valued at over $1&nbsp;billion', 'Portfolio companies have attracted investment or partnerships from Airbus, NASA, NEOM, Barclays, and others', 'Exit in the aerospace sector', 'Guest expert and judge at startup pitch competitions']),
+            ('Regulatory Policy', ['Engagement with the regulator (Bank&nbsp;of&nbsp;Russia)', 'Helped shape Russia&#8217;s crowdfunding law on behalf of the business community, working with the Association of Investment Platforms and the Bank of Russia']),
             ('Executive Leadership', ['15+ years in senior leadership roles, international teams', 'Risk-based management']),
         ],
         'band_eyebrow': 'Board Service', 'band_word': 'Advisory Board',
@@ -206,7 +209,7 @@ CONTENT = {
         'socials_title': 'Channels &amp; social media',
         'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Message on Telegram: @Anna_Niku', TG_PERSONAL),
                   ('tg', 'Telegram Channel', 'Telegram channel STRATEGY (in Russian)', TG_CHANNEL, 'channel'), ('yt', 'YouTube', 'YouTube channel STRATEGY (in Russian)', YOUTUBE), ('rt', 'RuTube', 'RuTube channel (in Russian)', RUTUBE)],
-        'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Non-Executive Director · Founder · Venture Investor',
+        'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Non&#8209;Executive&nbsp;Director · Founder · Venture&nbsp;Investor',
     },
 }
 
@@ -285,11 +288,11 @@ def page(c):
     vcards = ''.join(
         '<li class="vcard%s%s"><button type="button" class="vcard-btn" data-embed="%s" data-title="%s">'
         '<span class="vcard-thumb">%s<span class="vcard-play">%s</span></span>'
-        '<span class="vcard-text"><span class="vcard-badge">%s</span><span class="vcard-title">%s</span>%s</span></button></li>' % (
+        '<span class="vcard-text">%s<span class="vcard-title">%s</span>%s</span></button></li>' % (
             ' is-featured' if i == 0 else '', ' is-extra' if i >= VISIBLE else '',
             html.escape(v['embed'], quote=True), html.escape(v['main'] + (' · ' + v['guest'] if v['guest'] else ''), quote=True),
             ('<img src="%s" alt="" loading="lazy">' % html.escape(v['thumb'], quote=True)) if v.get('thumb') else '',
-            ICONS['play'], c['vd_latest'], html.escape(v['main']),
+            ICONS['play'], ('<span class="vcard-badge">%s</span>' % c['vd_latest']) if i == 0 else '', html.escape(v['main']),
             ('<span class="vcard-guest">%s %s</span>' % (c['vd_guest'], html.escape(v['guest']))) if v['guest'] else '')
         for i, v in enumerate(vids))
     more_btn = ('<button type="button" class="btn btn-outline vmore" data-less="%s">%s</button>' % (c['vd_less'], c['vd_more'])) if len(vids) > VISIBLE else ''
@@ -470,7 +473,7 @@ with open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8') as f:
 
 
 def plain(t):
-    return html.unescape(re.sub(r'<[^>]+>', '', t))
+    return html.unescape(re.sub(r'<[^>]+>', '', t)).replace('\xa0', ' ').replace('\u2011', '-')
 
 
 def llms_section(c):
