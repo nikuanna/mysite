@@ -307,3 +307,5 @@ section[id]{scroll-margin-top:72px}
 .socials .glow{overflow:visible}
 .socials .glow::before,.socials .glow-flash{display:none}
 .band-sub{max-width:720px;margin:32px auto 0;font-size:clamp(16px,1.35vw,19px);line-height:1.65;font-weight:300;color:var(--on-dark-muted)}
+.hero .eyebrow{align-items:flex-start}
+.hero .eyebrow::before{flex:none;margin-top:.72em}
