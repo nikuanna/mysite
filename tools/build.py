@@ -5,7 +5,7 @@ Output: annanikulina/index.html (RU) and en/index.html (EN)
 
 All texts live in CONTENT below. Edit them there, then run the script.
 """
-import html, json, os, re, sys
+import datetime, html, json, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
 BASE = 'https://nikuanna.github.io/mysite'
@@ -108,8 +108,13 @@ ICONS = {
 CONTENT = {
     'ru': {
         'lang': 'ru', 'dir': 'annanikulina', 'url': BASE + '/annanikulina/',
-        'title': 'Анна Никулина | Независимый директор, венчурный инвестор, советник',
-        'description': 'Независимый директор, венчурный инвестор и советник по стратегическому развитию. 15+ лет управленческого опыта в банковском секторе, финтехе и потребительских брендах.',
+        'title': 'Анна Никулина | Независимый директор, Advisory Board, венчурный инвестор',
+        'description': 'Анна Никулина: независимый директор, Advisory Board Member, венчурный инвестор. 13+ лет в банках ТОП-10 РФ. Корпоративное управление, риски, финтех, MENA.',
+        'keywords': 'Анна Никулина, независимый директор, член совета директоров, совет директоров, Advisory Board, советник по стратегическому развитию, директор по развитию, венчурный инвестор, корпоративное управление, риск-менеджмент, кредитные риски, финтех, краудфандинг, MENA',
+        'job_titles': ['Независимый директор', 'Advisory Board Member', 'Советник по стратегическому развитию', 'Директор по развитию', 'Венчурный инвестор'],
+        'knows_about': ['Корпоративное управление', 'Работа совета директоров', 'Независимый директор', 'Риск-менеджмент', 'Кредитные риски', 'Корпоративное кредитование', 'Антикризисное управление', 'Стратегическое развитие бизнеса', 'Венчурные инвестиции', 'Финтех', 'Краудфандинг', 'M&A', 'Due diligence', 'Цифровая трансформация', 'Рынок MENA', 'GR и регулирование'],
+        'org_member': 'Ассоциация независимых директоров (АНД)',
+        'location': 'Москва',
         'brand': 'А<span>.</span> Никулина',
         'nav': [('#experience', 'Опыт'), ('#services', 'Экспертиза'), ('#videos', 'Видео'), ('#contact', 'Контакты')],
         'vd_source': 'rutube', 'vd_channel_url': RUTUBE, 'vd_eyebrow': 'Видео',
@@ -153,8 +158,13 @@ CONTENT = {
     },
     'en': {
         'lang': 'en', 'dir': 'en', 'url': BASE + '/en/',
-        'title': 'Anna Nikulina | Independent / Non-Executive Director, Venture Investor, Strategic Advisor',
-        'description': 'Independent / non-executive director, venture investor, and strategic advisor with 15+ years of executive leadership in banking, fintech, and consumer brands.',
+        'title': 'Anna Nikulina | Independent / Non-Executive Director & Venture Investor',
+        'description': 'Anna Nikulina: independent / non-executive director, advisory board member, venture investor. 13+ years at top-10 Russian banks. Governance, risk, fintech, MENA.',
+        'keywords': 'Anna Nikulina, independent director, non-executive director, NED, INED, board member, board of directors, advisory board, strategic advisor, venture investor, corporate governance, risk management, credit risk, fintech, crowdfunding, MENA',
+        'job_titles': ['Independent / Non-Executive Director', 'Advisory Board Member', 'Strategic Advisor', 'Chief Business Development Officer', 'Venture Investor'],
+        'knows_about': ['Corporate governance', 'Board of directors', 'Non-executive director', 'Risk management', 'Credit risk', 'Corporate lending', 'Crisis management', 'Business strategy', 'Venture capital', 'Fintech', 'Crowdfunding', 'Mergers and acquisitions', 'Due diligence', 'Digital transformation', 'MENA markets', 'Regulatory policy'],
+        'org_member': 'Association of Independent Directors (AID), Russia',
+        'location': 'Moscow',
         'brand': 'A<span>.</span> Nikulina',
         'nav': [('#experience', 'Track Record'), ('#services', 'Expertise'), ('#videos', 'Videos'), ('#contact', 'Contact')],
         'vd_source': 'youtube', 'vd_channel_url': YOUTUBE, 'vd_eyebrow': 'Videos',
@@ -201,6 +211,48 @@ CONTENT = {
 
 def lis(items):
     return ''.join('<li>%s</li>' % i for i in items)
+
+
+def json_ld(c, vids):
+    other = CONTENT['en' if c['lang'] == 'ru' else 'ru']
+    person = {
+        '@type': 'Person', '@id': BASE + '/#person',
+        'name': c['h1_1'] + ' ' + c['h1_2'],
+        'alternateName': [other['h1_1'] + ' ' + other['h1_2']],
+        'givenName': c['h1_1'], 'familyName': c['h1_2'],
+        'url': c['url'], 'image': BASE + '/assets/img/anna-portrait.jpg',
+        'description': c['description'],
+        'jobTitle': c['job_titles'],
+        'knowsAbout': c['knows_about'],
+        'knowsLanguage': ['ru', 'en'],
+        'memberOf': {'@type': 'Organization', 'name': c['org_member']},
+        'homeLocation': {'@type': 'Place', 'name': c['location']},
+        'sameAs': [LINKEDIN, TG_CHANNEL, TG_PERSONAL, YOUTUBE, RUTUBE],
+    }
+    graph = [
+        {'@type': 'ProfilePage', '@id': c['url'] + '#page', 'url': c['url'], 'name': c['title'],
+         'description': c['description'], 'inLanguage': 'ru-RU' if c['lang'] == 'ru' else 'en-US',
+         'dateModified': datetime.date.today().isoformat(),
+         'isPartOf': {'@id': BASE + '/#website'}, 'mainEntity': {'@id': BASE + '/#person'},
+         'primaryImageOfPage': BASE + '/assets/img/anna-portrait.jpg'},
+        {'@type': 'WebSite', '@id': BASE + '/#website', 'url': BASE + '/', 'name': c['h1_1'] + ' ' + c['h1_2'],
+         'inLanguage': ['ru-RU', 'en-US']},
+        person,
+    ]
+    if vids:
+        items = []
+        for i, v in enumerate(vids):
+            vo = {'@type': 'VideoObject', 'name': v['main'],
+                  'description': v['main'] + ('. ' + c['vd_guest'] + ' ' + v['guest'] if v['guest'] else ''),
+                  'embedUrl': v['embed'], 'url': v['url']}
+            if v.get('thumb') and v['thumb'].startswith('http'):
+                vo['thumbnailUrl'] = v['thumb']
+            if v.get('date'):
+                vo['uploadDate'] = str(v['date'])[:10]
+            items.append({'@type': 'ListItem', 'position': i + 1, 'item': vo})
+        graph.append({'@type': 'ItemList', 'name': c['vd_eyebrow'], 'itemListElement': items})
+    data = {'@context': 'https://schema.org', '@graph': graph}
+    return json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 
 
 def page(c):
@@ -268,12 +320,26 @@ def page(c):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{plain_title}</title>
 <meta name="description" content="{desc}">
+<meta name="keywords" content="{html.escape(c['keywords'], quote=True)}">
+<meta name="author" content="{c['h1_1']} {c['h1_2']}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#ecc5c6">
 <link rel="canonical" href="{c['url']}">
 <link rel="alternate" hreflang="ru" href="{BASE}/annanikulina/">
 <link rel="alternate" hreflang="en" href="{BASE}/en/">
 <link rel="alternate" hreflang="x-default" href="{BASE}/annanikulina/">
 <meta property="og:type" content="profile">
+<meta property="og:site_name" content="{c['h1_1']} {c['h1_2']}">
+<meta property="profile:first_name" content="{c['h1_1']}">
+<meta property="profile:last_name" content="{c['h1_2']}">
+<meta property="og:locale:alternate" content="{'en_US' if c['lang'] == 'ru' else 'ru_RU'}">
+<meta property="og:image:alt" content="{c['portrait_alt']}">
+<link rel="me" href="{LINKEDIN}">
+<link rel="me" href="{TG_CHANNEL}">
+<link rel="me" href="{YOUTUBE}">
+<link rel="me" href="{RUTUBE}">
+<link rel="sitemap" type="application/xml" href="{BASE}/sitemap.xml">
+<script type="application/ld+json">{json_ld(c, vids)}</script>
 <meta property="og:title" content="{plain_title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{c['url']}">
@@ -382,3 +448,56 @@ for key, c in CONTENT.items():
     with open(out, 'w', encoding='utf-8') as f:
         f.write(page(c))
     print('built', out)
+
+today = datetime.date.today().isoformat()
+alts = ''.join('<xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (k, CONTENT[k]['url']) for k in CONTENT) + \
+    '<xhtml:link rel="alternate" hreflang="x-default" href="%s"/>' % CONTENT['ru']['url']
+urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>%s</priority>%s</url>'
+               % (CONTENT[k]['url'], today, '1.0' if k == 'ru' else '0.9', alts) for k in CONTENT)
+with open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:xhtml="http://www.w3.org/1999/xhtml">' + urls + '</urlset>\n')
+
+with open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8') as f:
+    f.write('# Search engines and AI assistants are welcome to index this site.\n'
+            'User-agent: *\nAllow: /\n\n'
+            + ''.join('User-agent: %s\nAllow: /\n\n' % b for b in
+                      ['Googlebot', 'Yandex', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot',
+                       'Claude-SearchBot', 'PerplexityBot', 'Google-Extended', 'Applebot-Extended'])
+            + 'Sitemap: %s/sitemap.xml\n' % BASE)
+
+
+def plain(t):
+    return html.unescape(re.sub(r'<[^>]+>', '', t))
+
+
+def llms_section(c):
+    out = ['## ' + ('Русская версия' if c['lang'] == 'ru' else 'English version'), '',
+           '- Page: ' + c['url'], '- ' + plain(c['eyebrow']), '- ' + plain(c['lead']), '- ' + plain(c['band_sub']), '']
+    for title, items in c['xp']:
+        out.append('### ' + plain(title))
+        out += ['- ' + plain(x) for x in items]
+        out.append('')
+    out.append('### ' + plain(c['sv_title']))
+    for _, title, items in c['services']:
+        out.append('- ' + plain(title) + ': ' + '; '.join(plain(x) for x in items))
+    out.append('')
+    vids = prepare_videos(VIDEOS.get(c['vd_source']) or [], c['lang'])
+    if vids:
+        out.append('### ' + plain(c['vd_title']))
+        out += ['- ' + v['main'] + (' (' + c['vd_guest'] + ' ' + v['guest'] + ')' if v['guest'] else '') + ': ' + v['url'] for v in vids]
+        out.append('')
+    return out
+
+
+ru, en = CONTENT['ru'], CONTENT['en']
+llms = ['# Anna Nikulina / Анна Никулина', '',
+        '> ' + plain(en['description']), '> ' + plain(ru['description']), '',
+        'Official personal website. Facts below are provided by Anna Nikulina herself.', '',
+        '## Contacts and profiles', '',
+        '- LinkedIn: ' + LINKEDIN, '- Telegram (personal): ' + TG_PERSONAL, '- Telegram channel STRATEGY (in Russian): ' + TG_CHANNEL,
+        '- YouTube channel STRATEGY: ' + YOUTUBE, '- RuTube channel: ' + RUTUBE, '']
+llms += llms_section(en) + llms_section(ru)
+with open(os.path.join(ROOT, 'llms.txt'), 'w', encoding='utf-8') as f:
+    f.write('\n'.join(llms))
+print('built sitemap.xml, robots.txt, llms.txt')
