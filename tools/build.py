@@ -368,7 +368,7 @@ def page(c):
 <meta name="twitter:image" content="{OG_IMG}">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/inter-tight-{'cyrillic' if c['lang'] == 'ru' else 'latin'}-300-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="{PORTRAIT}">
+<link rel="preload" as="image" href="{PORTRAIT.replace('.jpg', '.webp')}" type="image/webp">
 <link rel="stylesheet" href="../assets/site.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -397,7 +397,7 @@ def page(c):
         </div>
       </div>
       <div class="photo reveal d2" data-speed="-0.2">
-        <img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="1474" height="1866" fetchpriority="high">
+        <picture><source srcset="{PORTRAIT.replace('.jpg', '.webp')}" type="image/webp"><img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="1100" height="1393" fetchpriority="high" decoding="async"></picture>
         <div class="photo-tag"><b>{c['tag_num']}</b>{c['tag_text']}</div>
       </div>
     </div>

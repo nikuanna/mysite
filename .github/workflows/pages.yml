@@ -30,7 +30,7 @@ jobs:
           python-version: "3.12"
       - name: Fetch video lists (YouTube, RuTube)
         run: |
-          pip install --quiet yt-dlp
+          pip install --quiet yt-dlp pillow
           python3 tools/fetch_videos.py .
       - name: Build pages
         run: python3 tools/build.py .

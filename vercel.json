@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pip3 install --quiet yt-dlp || pip install --quiet yt-dlp || echo 'yt-dlp unavailable'; python3 tools/fetch_videos.py . || echo 'video refresh skipped'; python3 tools/build.py . || echo 'build skipped, using committed pages'",
+  "buildCommand": "pip3 install --quiet yt-dlp pillow || pip install --quiet yt-dlp || echo 'yt-dlp unavailable'; python3 tools/fetch_videos.py . || echo 'video refresh skipped'; python3 tools/build.py . || echo 'build skipped, using committed pages'",
   "outputDirectory": ".",
   "trailingSlash": true,
   "redirects": [

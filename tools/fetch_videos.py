@@ -98,8 +98,15 @@ def download(url, path):
         data = r.read()
     if len(data) < 5000:        # YouTube serves a tiny placeholder when the HD cover does not exist
         raise ValueError('placeholder')
-    with open(path, 'wb') as f:
-        f.write(data)
+    try:
+        from io import BytesIO
+        from PIL import Image
+        im = Image.open(BytesIO(data)).convert('RGB')
+        im.thumbnail((960, 540))
+        im.save(path, quality=80, optimize=True, progressive=True)
+    except Exception:
+        with open(path, 'wb') as f:
+            f.write(data)
 
 
 def localize_thumbs(data):
