@@ -1,8 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "(pip3 install --quiet yt-dlp && python3 tools/fetch_videos.py .) || echo 'video refresh skipped'; python3 tools/build.py . || echo 'build skipped, using committed pages'",
+  "outputDirectory": ".",
   "trailingSlash": true,
   "redirects": [
-    { "source": "/", "destination": "/annanikulina/", "permanent": false }
+    {
+      "source": "/",
+      "destination": "/annanikulina/",
+      "permanent": false
+    }
   ]
 }
