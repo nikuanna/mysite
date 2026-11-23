@@ -32,6 +32,9 @@ jobs:
       - name: Page content
         run: |
           curl -sSL https://annanikulina.pro/annanikulina/ | grep -oE "<title>[^<]*</title>|rel=\"canonical\"[^>]*|hreflang=\"[a-z-]+\" href=\"[^\"]*\"|og:url\" content=\"[^\"]*\"" || true
-          echo "== RU video thumbnails (rutube):"; curl -sSL https://www.annanikulina.pro/annanikulina/ | grep -o "rutube[a-z]*\.ru/[^\"]*\.\(jpg\|jpeg\|png\|webp\)" | wc -l
+          for u in https://www.annanikulina.pro/annanikulina/ https://nikuanna.github.io/mysite/annanikulina/; do
+            echo "== video thumbnails on $u:"; curl -sSL "$u" | grep -oE 'class="vcard-thumb"><img src="[^"]*"' | head -3
+          done
+          echo "== videos.json on domain:"; curl -sSL https://www.annanikulina.pro/data/videos.json | head -c 600; echo
           echo "== EN"
           curl -sSL https://annanikulina.pro/en/ | grep -oE "<title>[^<]*</title>|rel=\"canonical\"[^>]*" || true
