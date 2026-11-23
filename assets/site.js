@@ -97,6 +97,34 @@
 /* Glow: soft light follows the cursor over buttons, a flash on click */
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var STAR = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z"/></svg>';
+  var layer = document.createElement('div');
+  layer.className = 'sparkle-layer';
+  layer.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(layer);
+  var last = 0, alive = 0;
+  function sparkle(x, y, n, force) {
+    var now = Date.now();
+    if (!force && now - last < 55) return;
+    last = now;
+    for (var i = 0; i < n && alive < 40; i++) {
+      var s = document.createElement('span');
+      var size = 6 + Math.random() * 10;
+      var ang = Math.random() * Math.PI * 2, dist = 14 + Math.random() * (force ? 46 : 26);
+      s.className = 'sparkle' + (Math.random() < 0.45 ? ' gold' : '');
+      s.innerHTML = STAR;
+      s.style.left = (x + (Math.random() - .5) * 18) + 'px';
+      s.style.top = (y + (Math.random() - .5) * 18) + 'px';
+      s.style.setProperty('--s', size.toFixed(1) + 'px');
+      s.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(1) + 'px');
+      s.style.setProperty('--dy', (Math.sin(ang) * dist - 10).toFixed(1) + 'px');
+      var d = 700 + Math.random() * 600;
+      s.style.setProperty('--d', d.toFixed(0) + 'ms');
+      layer.appendChild(s);
+      alive++;
+      setTimeout(function (el) { el.remove(); alive--; }, d + 50, s);
+    }
+  }
   document.querySelectorAll('.glow').forEach(function (el) {
     function pos(e) {
       var r = el.getBoundingClientRect();
@@ -106,6 +134,10 @@
       var p = pos(e);
       el.style.setProperty('--mx', p.x + 'px');
       el.style.setProperty('--my', p.y + 'px');
+      if (e.pointerType === 'mouse') sparkle(e.clientX, e.clientY, 1);
+    });
+    el.addEventListener('pointerenter', function (e) {
+      if (e.pointerType === 'mouse') sparkle(e.clientX, e.clientY, 4, true);
     });
     el.addEventListener('pointerdown', function (e) {
       var p = pos(e);
@@ -115,6 +147,7 @@
       f.style.top = p.y + 'px';
       el.appendChild(f);
       setTimeout(function () { f.remove(); }, 750);
+      sparkle(e.clientX, e.clientY, 9, true);
     });
   });
 })();

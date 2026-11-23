@@ -280,7 +280,7 @@ def page(c):
 
 <main id="top">
   <section class="hero">
-    <div class="hero-word-wrap" data-speed="0.6" data-x="-0.35" aria-hidden="true"><div class="hero-word">{c['h1_2']}</div></div>
+    <div class="hero-word-wrap" data-speed="0.45" data-x="-0.06" aria-hidden="true"><div class="hero-word">{c['h1_2']}</div></div>
     <div class="wrap">
       <div class="hero-text" data-speed="0.18" data-fade>
         <div class="eyebrow reveal">{c['eyebrow']}</div>
@@ -313,7 +313,7 @@ def page(c):
   </section>
 
   <section class="band on-dark">
-    <div class="band-word-wrap" data-speed="0.25" data-x="0.6" aria-hidden="true"><div class="band-word">{c['band_word']}</div></div>
+    <div class="band-word-wrap" data-speed="0.25" data-x="0.08" aria-hidden="true"><div class="band-word">{c['band_word']}</div></div>
     <div class="wrap">
       <div class="eyebrow reveal">{c['band_eyebrow']}</div>
       <p class="band-text reveal d1">{c['band_text']}</p>
