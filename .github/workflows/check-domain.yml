@@ -1,0 +1,36 @@
+name: Check domain
+
+# Manual diagnostics: DNS, HTTPS, redirects and key files on the custom domain.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DNS
+        run: |
+          for h in annanikulina.pro www.annanikulina.pro; do
+            echo "== $h"
+            dig +short A "$h"; dig +short AAAA "$h"; dig +short CNAME "$h"
+          done
+          echo "== NS"; dig +short NS annanikulina.pro
+      - name: HTTP and redirects
+        run: |
+          for u in http://annanikulina.pro https://annanikulina.pro https://www.annanikulina.pro \
+                   https://annanikulina.pro/annanikulina/ https://annanikulina.pro/en/ https://annanikulina.pro/en \
+                   https://annanikulina.pro/sitemap.xml https://annanikulina.pro/robots.txt https://annanikulina.pro/llms.txt \
+                   https://annanikulina.pro/assets/site.css https://annanikulina.pro/assets/img/anna-portrait.jpg \
+                   https://annanikulina.pro/assets/img/og-cover.jpg https://nikuanna.github.io/mysite/; do
+            echo "== $u"
+            curl -sS -o /dev/null -L --max-redirs 5 -w "final=%{http_code} url=%{url_effective} redirects=%{num_redirects} ssl=%{ssl_verify_result}\n" "$u" || true
+            curl -sS -I --max-time 15 "$u" | grep -iE "^(HTTP|location|server|x-vercel|content-type)" || true
+          done
+      - name: Page content
+        run: |
+          curl -sSL https://annanikulina.pro/annanikulina/ | grep -oE "<title>[^<]*</title>|rel=\"canonical\"[^>]*|hreflang=\"[a-z-]+\" href=\"[^\"]*\"|og:url\" content=\"[^\"]*\"" || true
+          echo "== EN"
+          curl -sSL https://annanikulina.pro/en/ | grep -oE "<title>[^<]*</title>|rel=\"canonical\"[^>]*" || true
