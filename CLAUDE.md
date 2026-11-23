@@ -30,3 +30,5 @@
 - В меню нет логотипа/имени слева (пользователь просил убрать). Фоновой надписи с фамилией на первом экране нет: дублировала имя.
 - EN-термин роли: «Non-Executive Director» (решение пользователя). Должности в банках не указывать; в RU банки называть (ПСБ, МДМ Банк, УРАЛСИБ, СДМ-Банк), в EN «top-10 Russian banks» плюс названия. Номер закона (№ 259-ФЗ) указывать только в RU-версии.
 - SEO/ИИ: `tools/build.py` генерирует JSON-LD (Person, ProfilePage, WebSite, ItemList видео), meta robots/keywords/og, `sitemap.xml`, `robots.txt` (открыт для поисковиков и ИИ-ботов) и `llms.txt` (факты для ИИ, RU+EN). Поля `keywords`, `job_titles`, `knows_about` в CONTENT. Description держать до ~160 символов.
+- Обложки видео при сборке (GitHub Actions и Vercel) скачиваются в `assets/video-thumbs/` (в git не хранятся, см. .gitignore), страница не зависит от CDN YouTube/RuTube. Цель: сайт открывается без VPN в любой стране, кроме материкового Китая.
+- Хостинг: из России Vercel тормозит (бесконечная загрузка), поэтому домен переводится на GitHub Pages (A-записи 185.199.108-111.153, www CNAME nikuanna.github.io).

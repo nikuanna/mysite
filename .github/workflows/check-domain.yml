@@ -33,7 +33,7 @@ jobs:
         run: |
           curl -sSL https://annanikulina.pro/annanikulina/ | grep -oE "<title>[^<]*</title>|rel=\"canonical\"[^>]*|hreflang=\"[a-z-]+\" href=\"[^\"]*\"|og:url\" content=\"[^\"]*\"" || true
           for u in https://www.annanikulina.pro/annanikulina/ https://nikuanna.github.io/mysite/annanikulina/; do
-            echo "== video thumbnails on $u:"; curl -sSL "$u" | grep -oE 'vcard-thumb"><img src="[^"]+"' | head -3
+            echo "== video thumbnails on $u:"; curl -sSL "$u" | grep -oE 'vcard-thumb"><img src="[^"]+"' | head -2; echo "external requests on load:"; curl -sSL "$u" | grep -oE '(src|href)="https?://[^"]+"' | grep -vE 'annanikulina.pro|nikuanna.github.io|schema.org|t.me|linkedin.com|youtube.com/@|rutube.ru/channel|rutube.ru/video|youtube.com/watch|w3.org' | sort -u | head
           done
           echo "== videos.json on domain:"; curl -sSL https://www.annanikulina.pro/data/videos.json | head -c 600; echo
           echo "== EN"
