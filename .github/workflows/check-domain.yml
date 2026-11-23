@@ -27,13 +27,13 @@ jobs:
                    https://annanikulina.pro/assets/img/og-cover.jpg https://nikuanna.github.io/mysite/; do
             echo "== $u"
             curl -sS -o /dev/null -L --max-redirs 5 -w "final=%{http_code} url=%{url_effective} redirects=%{num_redirects} ssl=%{ssl_verify_result}\n" "$u" || true
-            curl -sS -I --max-time 15 "$u" | grep -iE "^(HTTP|location|server|x-vercel|content-type)" || true
+            curl -sS -I --max-time 15 "$u" | grep -iE "^(HTTP|location|server|x-vercel|content-type|strict-transport|content-security|x-frame|x-content-type|referrer-policy)" || true
           done
       - name: Page content
         run: |
           curl -sSL https://annanikulina.pro/annanikulina/ | grep -oE "<title>[^<]*</title>|rel=\"canonical\"[^>]*|hreflang=\"[a-z-]+\" href=\"[^\"]*\"|og:url\" content=\"[^\"]*\"" || true
           for u in https://www.annanikulina.pro/annanikulina/ https://nikuanna.github.io/mysite/annanikulina/; do
-            echo "== video thumbnails on $u:"; curl -sSL "$u" | grep -oE 'class="vcard-thumb"><img src="[^"]*"' | head -3
+            echo "== video thumbnails on $u:"; curl -sSL "$u" | grep -oE 'vcard-thumb"><img src="[^"]+"' | head -3
           done
           echo "== videos.json on domain:"; curl -sSL https://www.annanikulina.pro/data/videos.json | head -c 600; echo
           echo "== EN"
