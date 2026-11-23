@@ -59,7 +59,7 @@ ul{padding:0;list-style:none}
 .nav-links a::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:1px;background:var(--wine);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .nav-links a:hover{color:var(--text)}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav.scrolled{background:rgba(251,246,243,.82);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:0 1px 0 var(--line);padding:14px 0}
+.nav.scrolled{background:rgba(251,247,247,.96);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);box-shadow:0 1px 0 var(--line);padding:14px 0}
 .lang{display:flex;padding:3px;border:1px solid rgba(42,18,24,.2);border-radius:999px}
 .lang a{min-width:40px;padding:6px 11px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.1em;text-align:center;color:rgba(42,18,24,.65);transition:background .3s,color .3s}
 .lang a:hover{color:var(--text)}
@@ -71,7 +71,7 @@ ul{padding:0;list-style:none}
   background:radial-gradient(circle,rgba(255,236,236,.55) 0%,rgba(255,236,236,.18) 45%,rgba(255,236,236,0) 70%);filter:blur(10px);will-change:transform}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;align-items:end;gap:56px;padding-top:120px}
 .hero-text{padding-bottom:clamp(64px,10vh,120px)}
-.hero .eyebrow{font-size:clamp(13px,1.1vw,15px);letter-spacing:.2em}
+.hero .eyebrow{font-size:clamp(15px,1.3vw,18px);letter-spacing:.18em}
 .hero h1{font-weight:300;font-size:clamp(58px,8.4vw,124px);line-height:.9;letter-spacing:-.055em;margin:26px 0 30px;color:var(--text)}
 .hero h1 .l2{display:block;font-weight:500;color:var(--wine)}
 .hero-lead{max-width:540px;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:rgba(42,18,24,.78)}
@@ -264,7 +264,18 @@ section[id]{scroll-margin-top:72px}
   .hero .eyebrow::before{display:none}
   .band-word{font-size:12.5vw}
   .band{padding:120px 0 96px}
-  .hero .eyebrow{letter-spacing:.16em;line-height:1.5}
+  .hero .eyebrow{font-size:15px;letter-spacing:.12em;line-height:1.5}
+  .hero h1{line-height:.98;margin:20px 0 24px}
+  .h2{line-height:1.12;letter-spacing:-.025em}
+  .band-text{line-height:1.2;letter-spacing:-.02em}
+  .xp-title,.card h3,.vcard-title{line-height:1.3}
+  .vcard.is-featured .vcard-title{line-height:1.25}
+  .stat-num{font-size:clamp(34px,10vw,44px);white-space:nowrap}
+  .icon-row{gap:8px}
+  .icon-row a{width:42px;height:42px}
+  .icon-row .has-word a{padding:0 13px 0 11px}
+  .hero-cta{gap:14px}
+  .vcard.is-featured .vcard-text{margin-top:18px}
   .photo{width:84%}
   .photo-tag{left:-14px;padding:12px 16px}
   .photo-tag b{font-size:24px}
