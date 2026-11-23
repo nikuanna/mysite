@@ -1,8 +1,8 @@
 # Сайт Анны Никулиной
 
 Персональный сайт (RU + EN), собственный код без конструктора.
-Основной домен: https://www.annanikulina.pro (Vercel, проект nikuanna/mysite, DNS у REG.RU; apex annanikulina.pro редиректит на www). RU: /annanikulina/, EN: /en/. Константа `BASE` в `tools/build.py`.
-Запасная копия: GitHub Pages https://nikuanna.github.io/mysite/ (canonical указывает на домен).
+Основной домен: https://www.annanikulina.pro, хостинг GitHub Pages (Custom domain в Settings → Pages, DNS у REG.RU: A @ → 185.199.108-111.153, CNAME www → nikuanna.github.io). apex annanikulina.pro редиректит на www. RU: /annanikulina/, EN: /en/. Константа `BASE` в `tools/build.py`.
+Vercel больше не основной хостинг (в России тормозил); `vercel.json` оставлен на случай возврата. Адрес nikuanna.github.io/mysite/ теперь редиректит на домен.
 `vercel.json`: редирект / → /annanikulina/, trailingSlash, buildCommand (видео + сборка), заголовки безопасности (HSTS preload, CSP upgrade-insecure-requests, nosniff, X-Frame-Options). `.github/workflows/check-domain.yml` — ручная диагностика домена (DNS, HTTPS, файлы), смотреть логи в Actions.
 
 ## Структура
