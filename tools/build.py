@@ -181,8 +181,8 @@ def lis(items):
 def page(c):
     other = 'en' if c['lang'] == 'ru' else 'ru'
     lang_sw = ('<nav class="lang" aria-label="Language">'
-               '<a href="../annanikulina/" hreflang="ru" lang="ru"%s>RU</a>'
-               '<a href="../en/" hreflang="en" lang="en"%s>EN</a></nav>') % (
+               '<a class="glow" href="../annanikulina/" hreflang="ru" lang="ru"%s>RU</a>'
+               '<a class="glow" href="../en/" hreflang="en" lang="en"%s>EN</a></nav>') % (
         ' aria-current="page"' if c['lang'] == 'ru' else '',
         ' aria-current="page"' if c['lang'] == 'en' else '')
     stats = ''.join('<li class="reveal d%d"><div class="stat-num">%s</div><div class="stat-label">%s</div></li>' % (i, n, t)
@@ -192,7 +192,7 @@ def page(c):
     cards = ''.join('<article class="card reveal d%d"><div class="card-icon">%s</div><h3>%s</h3><ul>%s</ul></article>'
                     % (i + 1, ICONS[ic], t, lis(items)) for i, (ic, t, items) in enumerate(c['services']))
     def a(href, title):
-        return '<a href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s">' % (href, title, title)
+        return '<a class="glow" href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s">' % (href, title, title)
     links = ''.join('<li>%s<span class="social-ico">%s</span><span class="social-label">%s</span></a></li>'
                     % (a(l[3], l[2]), ICONS[l[0]], l[1]) for l in c['links'])
     def icon(l):
@@ -232,7 +232,7 @@ def page(c):
   </dialog>'''
     else:
         video_section = ''
-    nav_links = ''.join('<a href="%s">%s</a>' % l for l in c['nav'] if l[0] != '#videos' or vids)
+    nav_links = ''.join('<a class="glow" href="%s">%s</a>' % l for l in c['nav'] if l[0] != '#videos' or vids)
     desc = html.escape(c['description'], quote=True)
     plain_title = html.escape(c['title'], quote=True)
 
@@ -280,18 +280,18 @@ def page(c):
 
 <main id="top">
   <section class="hero">
-    <div class="hero-word" data-speed="0.35" aria-hidden="true">{c['h1_2']}</div>
+    <div class="hero-word-wrap" data-speed="0.6" data-x="-0.35" aria-hidden="true"><div class="hero-word">{c['h1_2']}</div></div>
     <div class="wrap">
-      <div class="hero-text">
+      <div class="hero-text" data-speed="0.18" data-fade>
         <div class="eyebrow reveal">{c['eyebrow']}</div>
         <h1 class="reveal d1">{c['h1_1']}<span class="l2">{c['h1_2']}</span></h1>
         <p class="hero-lead reveal d2">{c['lead']}</p>
         <div class="hero-cta reveal d3">
-          <a class="btn btn-wine" href="#contact">{c['cta_main']}{ICONS['arrow']}</a>
+          <a class="btn btn-wine glow" href="#contact">{c['cta_main']}{ICONS['arrow']}</a>
           <ul class="icon-row" aria-label="{c['socials_title']}">{icons}</ul>
         </div>
       </div>
-      <div class="photo reveal d2" data-speed="-0.08">
+      <div class="photo reveal d2" data-speed="-0.2">
         <img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="1368" height="2000" fetchpriority="high">
         <div class="photo-tag"><b>{c['tag_num']}</b>{c['tag_text']}</div>
       </div>
@@ -313,7 +313,7 @@ def page(c):
   </section>
 
   <section class="band on-dark">
-    <div class="band-word-wrap" data-speed="0.3" aria-hidden="true"><div class="band-word">{c['band_word']}</div></div>
+    <div class="band-word-wrap" data-speed="0.25" data-x="0.6" aria-hidden="true"><div class="band-word">{c['band_word']}</div></div>
     <div class="wrap">
       <div class="eyebrow reveal">{c['band_eyebrow']}</div>
       <p class="band-text reveal d1">{c['band_text']}</p>

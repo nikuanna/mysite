@@ -9,7 +9,7 @@
   function onNav() { if (nav) nav.classList.toggle('scrolled', window.scrollY > 40); }
 
   // Parallax: elements with data-speed move relative to their section
-  var layers = [].slice.call(document.querySelectorAll('[data-speed]'));
+  var layers = [].slice.call(document.querySelectorAll('[data-speed],[data-x]'));
   var ticking = false;
   function parallax() {
     var vh = window.innerHeight;
@@ -17,10 +17,17 @@
       var host = el.parentElement.getBoundingClientRect();
       if (host.bottom < -200 || host.top > vh + 200) return;
       var speed = parseFloat(el.getAttribute('data-speed')) || 0;
+      var xs = parseFloat(el.getAttribute('data-x')) || 0;
       var center = host.top + host.height / 2 - vh / 2;
-      var max = host.height * 0.2;
+      var max = host.height * 0.4;
       var y = Math.max(-max, Math.min(max, center * -speed));
-      el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
+      if (el._base === undefined) el._base = host.top < vh ? center : 0;
+      var x = (center - el._base) * xs;
+      el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      if (el.hasAttribute('data-fade')) {
+        var gone = Math.max(0, -host.top - host.height * 0.25) / (host.height * 0.6);
+        el.style.opacity = Math.max(0, 1 - gone).toFixed(3);
+      }
     });
     ticking = false;
   }
@@ -85,4 +92,29 @@
       if (on) sec.querySelectorAll('.vcard.is-extra').forEach(function (el) { el.classList.add('in'); });
     });
   }
+})();
+
+/* Glow: soft light follows the cursor over buttons, a flash on click */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.glow').forEach(function (el) {
+    function pos(e) {
+      var r = el.getBoundingClientRect();
+      return { x: e.clientX - r.left, y: e.clientY - r.top };
+    }
+    el.addEventListener('pointermove', function (e) {
+      var p = pos(e);
+      el.style.setProperty('--mx', p.x + 'px');
+      el.style.setProperty('--my', p.y + 'px');
+    });
+    el.addEventListener('pointerdown', function (e) {
+      var p = pos(e);
+      var f = document.createElement('span');
+      f.className = 'glow-flash';
+      f.style.left = p.x + 'px';
+      f.style.top = p.y + 'px';
+      el.appendChild(f);
+      setTimeout(function () { f.remove(); }, 750);
+    });
+  });
 })();
