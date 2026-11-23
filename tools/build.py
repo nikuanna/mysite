@@ -9,7 +9,7 @@ import datetime, html, json, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
 BASE = 'https://www.annanikulina.pro'
-PORTRAIT = '../assets/img/anna-portrait-event.jpg'  # retouched by request: light background blur, rose grade; original kept as anna-portrait-event-original.jpg
+PORTRAIT = '../assets/img/anna-portrait-home.jpg'  # light bg blur, orange sofa toned to rose; original: anna-portrait-home-original.jpg
 OG_IMG = BASE + '/assets/img/og-cover.jpg'
 
 LINKEDIN = 'https://www.linkedin.com/in/anna-nikulina-cbdo/'
@@ -235,7 +235,7 @@ def json_ld(c, vids):
         'name': c['h1_1'] + ' ' + c['h1_2'],
         'alternateName': [other['h1_1'] + ' ' + other['h1_2']],
         'givenName': c['h1_1'], 'familyName': c['h1_2'],
-        'url': c['url'], 'image': BASE + '/assets/img/anna-portrait-event.jpg',
+        'url': c['url'], 'image': BASE + '/assets/img/anna-portrait-home.jpg',
         'description': c['description'],
         'jobTitle': c['job_titles'],
         'knowsAbout': c['knows_about'],
@@ -249,7 +249,7 @@ def json_ld(c, vids):
          'description': c['description'], 'inLanguage': 'ru-RU' if c['lang'] == 'ru' else 'en-US',
          'dateModified': datetime.date.today().isoformat(),
          'isPartOf': {'@id': BASE + '/#website'}, 'mainEntity': {'@id': BASE + '/#person'},
-         'primaryImageOfPage': BASE + '/assets/img/anna-portrait-event.jpg'},
+         'primaryImageOfPage': BASE + '/assets/img/anna-portrait-home.jpg'},
         {'@type': 'WebSite', '@id': BASE + '/#website', 'url': BASE + '/', 'name': c['h1_1'] + ' ' + c['h1_2'],
          'inLanguage': ['ru-RU', 'en-US']},
         person,
@@ -397,7 +397,7 @@ def page(c):
         </div>
       </div>
       <div class="photo reveal d2" data-speed="-0.2">
-        <img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="1075" height="1280" fetchpriority="high">
+        <img src="{PORTRAIT}" alt="{c['portrait_alt']}" width="1474" height="1866" fetchpriority="high">
         <div class="photo-tag"><b>{c['tag_num']}</b>{c['tag_text']}</div>
       </div>
     </div>

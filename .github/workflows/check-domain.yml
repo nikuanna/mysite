@@ -18,6 +18,14 @@ jobs:
             dig +short A "$h"; dig +short AAAA "$h"; dig +short CNAME "$h"
           done
           echo "== NS"; dig +short NS annanikulina.pro
+          echo "== authoritative (REG.RU) answers"
+          for ns in ns1.hosting.reg.ru ns2.hosting.reg.ru; do
+            echo "-- $ns A @:"; dig +short @$ns A annanikulina.pro
+            echo "-- $ns www:"; dig +short @$ns CNAME www.annanikulina.pro; dig +short @$ns A www.annanikulina.pro
+          done
+          echo "== public resolvers"
+          for r in 8.8.8.8 1.1.1.1 77.88.8.8; do echo "-- $r:"; dig +short @$r A annanikulina.pro; dig +short @$r CNAME www.annanikulina.pro; done
+          echo "== TTL"; dig +noall +answer A annanikulina.pro; dig +noall +answer CNAME www.annanikulina.pro
       - name: HTTP and redirects
         run: |
           for u in http://annanikulina.pro https://annanikulina.pro https://www.annanikulina.pro \
