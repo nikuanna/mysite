@@ -72,6 +72,16 @@ EN_GUESTS = {
 }
 
 
+def thumb_img(url):
+    """YouTube: high-resolution cover (1280x720) with a fallback to the standard one."""
+    url = html.escape(url, quote=True)
+    if 'i.ytimg.com' in url and 'hqdefault' in url:
+        hi = url.replace('hqdefault', 'maxresdefault')
+        return ('<img src="%s" alt="" loading="lazy" decoding="async" '
+                'onerror="this.onerror=null;this.src=\'%s\'">' % (hi, url))
+    return '<img src="%s" alt="" loading="lazy" decoding="async">' % url
+
+
 def prepare_videos(vids, lang='ru'):
     """Full episodes only: no teasers, no Shorts, no duplicates. Splits 'Title | Guest, Anna' into title + guest."""
     out, seen = [], {}
@@ -291,7 +301,7 @@ def page(c):
         '<span class="vcard-text">%s<span class="vcard-title">%s</span>%s</span></button></li>' % (
             ' is-featured' if i == 0 else '', ' is-extra' if i >= VISIBLE else '',
             html.escape(v['embed'], quote=True), html.escape(v['main'] + (' · ' + v['guest'] if v['guest'] else ''), quote=True),
-            ('<img src="%s" alt="" loading="lazy">' % html.escape(v['thumb'], quote=True)) if v.get('thumb') else '',
+            thumb_img(v['thumb']) if v.get('thumb') else '',
             ICONS['play'], ('<span class="vcard-badge">%s</span>' % c['vd_latest']) if i == 0 else '', html.escape(v['main']),
             ('<span class="vcard-guest">%s %s</span>' % (c['vd_guest'], html.escape(v['guest']))) if v['guest'] else '')
         for i, v in enumerate(vids))

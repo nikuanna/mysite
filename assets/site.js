@@ -67,6 +67,8 @@
     btn.addEventListener('click', function () {
       var src = btn.getAttribute('data-embed');
       src += (src.indexOf('?') < 0 ? '?' : '&') + 'autoplay=1';
+      // YouTube: ask for HD from the start and keep related videos to this channel
+      if (src.indexOf('youtube') > -1) src += '&vq=hd1080&rel=0&playsinline=1';
       var f = document.createElement('iframe');
       f.src = src;
       f.title = btn.getAttribute('data-title');
