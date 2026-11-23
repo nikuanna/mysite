@@ -31,6 +31,28 @@ VIDEOS = load_videos()
 SELF_NAMES = {'анна никулина', 'anna nikulina'}
 
 
+# Words that keep their own spelling in video titles: abbreviations and proper names.
+KEEP_CASE = {'сд': 'СД', 'm&a': 'M&A', 'ии': 'ИИ', 'китай': 'Китай', 'китае': 'Китае', 'китая': 'Китая',
+             'россия': 'Россия', 'россии': 'России', 'mena': 'MENA', 'ai': 'AI', 'it': 'IT', 'ит': 'ИТ'}
+
+
+def sentence_case(title):
+    """Uniform titles: lowercase, first word capitalized, abbreviations and names kept."""
+    words = title.split()
+    out = []
+    for i, w in enumerate(words):
+        core = w.strip('.,:;!?«»"()')
+        low = core.lower()
+        if low in KEEP_CASE:
+            fixed = KEEP_CASE[low]
+        elif i == 0:
+            fixed = low[:1].upper() + low[1:]
+        else:
+            fixed = low
+        out.append(w.replace(core, fixed, 1) if core else w)
+    return ' '.join(out)
+
+
 def prepare_videos(vids):
     """Full episodes only: no teasers, no Shorts, no duplicates. Splits 'Title | Guest, Anna' into title + guest."""
     out, seen = [], {}
@@ -39,7 +61,7 @@ def prepare_videos(vids):
             continue
         main, _, rest = v['title'].partition(' | ')
         guests = [g.strip() for g in rest.split(',') if g.strip() and g.strip().lower() not in SELF_NAMES]
-        item = dict(v, main=main.strip(), guest=', '.join(guests))
+        item = dict(v, main=sentence_case(main.strip()), guest=', '.join(guests))
         key = item['main'].lower()
         if key in seen:
             if item['guest'] and not out[seen[key]]['guest']:
@@ -186,7 +208,7 @@ def page(c):
         '<span class="vcard-thumb">%s<span class="vcard-play">%s</span></span>'
         '<span class="vcard-text"><span class="vcard-badge">%s</span><span class="vcard-title">%s</span>%s</span></button></li>' % (
             ' is-featured' if i == 0 else '', ' is-extra' if i >= VISIBLE else '',
-            html.escape(v['embed'], quote=True), html.escape(v['title'], quote=True),
+            html.escape(v['embed'], quote=True), html.escape(v['main'] + (' · ' + v['guest'] if v['guest'] else ''), quote=True),
             ('<img src="%s" alt="" loading="lazy">' % html.escape(v['thumb'], quote=True)) if v.get('thumb') else '',
             ICONS['play'], c['vd_latest'], html.escape(v['main']),
             ('<span class="vcard-guest">%s %s</span>' % (c['vd_guest'], html.escape(v['guest']))) if v['guest'] else '')
