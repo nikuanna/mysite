@@ -1,7 +1,9 @@
 # Сайт Анны Никулиной
 
-Персональный сайт (RU + EN), собственный код без конструктора. Хостинг: GitHub Pages.
-Адреса: https://nikuanna.github.io/mysite/annanikulina/ (RU), https://nikuanna.github.io/mysite/en/ (EN).
+Персональный сайт (RU + EN), собственный код без конструктора.
+Основной домен: https://www.annanikulina.pro (Vercel, проект nikuanna/mysite, DNS у REG.RU; apex annanikulina.pro редиректит на www). RU: /annanikulina/, EN: /en/. Константа `BASE` в `tools/build.py`.
+Запасная копия: GitHub Pages https://nikuanna.github.io/mysite/ (canonical указывает на домен).
+`vercel.json`: редирект / → /annanikulina/, trailingSlash. `.github/workflows/check-domain.yml` — ручная диагностика домена (DNS, HTTPS, файлы), смотреть логи в Actions.
 
 ## Структура
 - `tools/build.py` — ЕДИНСТВЕННЫЙ источник текстов и разметки. Словарь `CONTENT` содержит обе версии (ru, en). Шаблон страницы в функции `page()`.

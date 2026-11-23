@@ -8,7 +8,7 @@ All texts live in CONTENT below. Edit them there, then run the script.
 import datetime, html, json, os, re, sys
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '.'
-BASE = 'https://nikuanna.github.io/mysite'
+BASE = 'https://www.annanikulina.pro'
 PORTRAIT = '../assets/img/anna-portrait.jpg'  # original photo, never edited
 OG_IMG = BASE + '/assets/img/og-cover.jpg'
 

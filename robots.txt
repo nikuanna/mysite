@@ -35,4 +35,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://nikuanna.github.io/mysite/sitemap.xml
+Sitemap: https://www.annanikulina.pro/sitemap.xml
