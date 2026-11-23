@@ -33,7 +33,8 @@ SELF_NAMES = {'анна никулина', 'anna nikulina'}
 
 # Words that keep their own spelling in video titles: abbreviations and proper names.
 KEEP_CASE = {'сд': 'СД', 'm&a': 'M&A', 'ии': 'ИИ', 'китай': 'Китай', 'китае': 'Китае', 'китая': 'Китая',
-             'россия': 'Россия', 'россии': 'России', 'mena': 'MENA', 'ai': 'AI', 'it': 'IT', 'ит': 'ИТ'}
+             'россия': 'Россия', 'россии': 'России', 'mena': 'MENA', 'ai': 'AI', 'it': 'IT', 'ит': 'ИТ',
+             'china': 'China', 'russia': 'Russia', 'uae': 'UAE', 'dubai': 'Dubai'}
 
 
 def sentence_case(title):
@@ -53,7 +54,24 @@ def sentence_case(title):
     return ' '.join(out)
 
 
-def prepare_videos(vids):
+# English titles for the EN page (keyed by YouTube video id) and Latin spelling of guest names.
+EN_TITLES = {
+    'cvLB6uWxBnk': 'Secondary liability of board members and owners',
+    'VuuB7uzdvwo': 'The robot revolution',
+    'n84INQQOz0Q': 'Home as a service',
+    'jWN5XPts_jQ': 'Behind the scenes of M&A',
+    'KyPmCVrwbLU': 'A strategy for country living',
+    '8VpxzIJPAVs': 'Artificial intelligence: a ticket to the future',
+    'xlhwJ3_e-nw': 'How to expand your business into China',
+}
+EN_GUESTS = {
+    'Павел Викторов': 'Pavel Viktorov', 'Артём Лукин': 'Artem Lukin', 'Артем Лукин': 'Artem Lukin',
+    'Артём Бабинов': 'Artem Babinov', 'Артем Бабинов': 'Artem Babinov', 'Иван Скавыш': 'Ivan Skavysh',
+    'Евгений Антифеев': 'Evgeny Antifeev', 'Тимур Эль-Гохари': 'Timur El-Gohary', 'Виктор Соковнин': 'Viktor Sokovnin',
+}
+
+
+def prepare_videos(vids, lang='ru'):
     """Full episodes only: no teasers, no Shorts, no duplicates. Splits 'Title | Guest, Anna' into title + guest."""
     out, seen = [], {}
     for v in vids:
@@ -61,6 +79,9 @@ def prepare_videos(vids):
             continue
         main, _, rest = v['title'].partition(' | ')
         guests = [g.strip() for g in rest.split(',') if g.strip() and g.strip().lower() not in SELF_NAMES]
+        if lang == 'en':
+            main = EN_TITLES.get(v['id'], main)
+            guests = [EN_GUESTS.get(g, g) for g in guests]
         item = dict(v, main=sentence_case(main.strip()), guest=', '.join(guests))
         key = item['main'].lower()
         if key in seen:
@@ -205,7 +226,7 @@ def page(c):
             return '<li class="has-word">%s%s<span>%s</span></a></li>' % (a(l[3], l[2]), ICONS[l[0]], word)
         return '<li>%s%s</a></li>' % (a(l[3], l[2]), ICONS[l[0]])
     icons = ''.join(icon(l) for l in c['links'])
-    vids = prepare_videos(VIDEOS.get(c['vd_source']) or [])
+    vids = prepare_videos(VIDEOS.get(c['vd_source']) or [], c['lang'])
     VISIBLE = 7
     vcards = ''.join(
         '<li class="vcard%s%s"><button type="button" class="vcard-btn" data-embed="%s" data-title="%s">'
