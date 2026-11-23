@@ -104,15 +104,17 @@ CONTENT = {
         'stats': [('15+', 'лет управленческого опыта'), ('50+', 'филиалов под управлением'),
                   ('₽2&nbsp;трлн', 'активы банка из ТОП-10 РФ'), ('10&nbsp;000+', 'сотрудников в банках, где я работала')],
         'xp_eyebrow': 'Опыт', 'xp_title': 'Опыт, подтверждённый <b>результатами</b>',
-        'xp_intro': 'Банковский сектор, создание собственных компаний, венчурные инвестиции и работа с регулятором. Смотрю на бизнес одновременно глазами собственника, инвестора и риск-менеджера.',
+        'xp_intro': '13+ лет в банковском секторе, включая банки ТОП-10 РФ, собственные компании от запуска до экзита, венчурный портфель на глобальных рынках и участие в формировании регулирования финтеха. Смотрю на бизнес одновременно глазами собственника, инвестора и риск-менеджера.',
         'xp': [
-            ('Опыт основателя B2B&nbsp;|&nbsp;B2C', ['Совладелец российского бренда в сфере красоты и здоровья', 'Сооснователь глобального ИТ-стартапа', 'Основатель финтех-стартапа в России']),
-            ('Банковский сектор', ['В прошлом управляющий директор в банках ТОП-10 РФ (10+ тыс. сотрудников, активы ₽2 трлн)', 'Создание и управление многомиллиардными корпоративными кредитными портфелями', 'Эксперт по оценке финансовой устойчивости и кредитованию бизнеса и проектов: от МСБ до крупных промышленных компаний', 'Риск-менеджер с опытом антикризисного управления']),
-            ('Инвестор', ['Венчурный инвестор в технологические стартапы ранних стадий на глобальных рынках, успешный экзит', 'Приглашённый эксперт и член жюри конкурсов стартапов']),
-            ('Регулирование и GR', ['Участие в разработке Федерального закона № 259-ФЗ «О привлечении инвестиций с использованием инвестиционных платформ» со стороны бизнеса']),
-            ('Управленческий опыт', ['15+ лет опыта в управлении (50+ филиалов, международные команды)', 'Риск-ориентированное и антикризисное управление']),
+            ('Корпоративное управление', ['Член Ассоциации независимых директоров (АНД)', 'Курс «Независимый директор в совете директоров», АНД, 2024']),
+            ('Банковский сектор', ['13+ лет в банках ПСБ (Промсвязьбанк), МДМ Банк, УРАЛСИБ, СДМ&#8209;Банк, в том числе ТОП&#8209;10 РФ (10+ тыс. сотрудников, активы ₽2 трлн)', 'Кредитование крупного и среднего бизнеса, оценка и управление кредитными рисками', 'Курирование и развитие кредитования в 50+ филиалах', 'Создание и управление многомиллиардными корпоративными кредитными портфелями', 'Оценка финансовой устойчивости бизнеса и проектов: от МСБ до крупных промышленных компаний', 'Антикризисное управление']),
+            ('Опыт основателя B2B&nbsp;|&nbsp;B2C', ['Глобальный B2B ИТ-стартап с выручкой, регион MENA: платформа для управления и цифровой трансформации бизнеса. Сооснователь и директор по развитию, сейчас Advisory Board Member', 'Собственный бренд нутрицевтики: первый в России anti-age нутрицевтик с клинически значимой концентрацией эластина', 'Основатель финтех-стартапа в России']),
+            ('Венчурные инвестиции', ['Венчурный инвестор в технологические стартапы ранних стадий на глобальных рынках', 'Оценка компаний портфеля: более $1 млрд', 'Соинвесторы в портфельных компаниях: Airbus, NASA, NEOM, Barclays', 'Экзит в аэрокосмической отрасли (Aerospace)', 'Приглашённый эксперт и член жюри конкурсов стартапов']),
+            ('Регулирование и GR', ['Участие в разработке закона о краудфандинге (об инвестиционных платформах) со стороны бизнеса, во взаимодействии Ассоциации инвестиционных платформ и Банка России']),
+            ('Управленческий опыт', ['15+ лет на руководящих позициях, международные команды', 'Риск-ориентированное управление']),
         ],
         'band_eyebrow': 'Советы директоров', 'band_word': 'Advisory Board',
+        'band_sub': 'Привношу в совет директоров глубокое понимание рисков и взгляд предпринимателя: от запуска бизнеса, в том числе на глобальных рынках, до экзита. Задаю неудобные вопросы, которые защищают компанию от системных ошибок.',
         'band_text': 'Открыта к работе в <b>советах директоров</b> и <b>Advisory Board</b> частных компаний',
         'sv_eyebrow': 'Экспертиза', 'sv_title': 'Чем я могу быть <b>полезна</b>',
         'sv_intro': 'Работаю с теми, кому важен взгляд со стороны: независимый, системный и основанный на реальном опыте.',
@@ -130,14 +132,14 @@ CONTENT = {
     },
     'en': {
         'lang': 'en', 'dir': 'en', 'url': BASE + '/en/',
-        'title': 'Anna Nikulina | Independent Non-Executive Director, Venture Investor, Strategic Advisor',
-        'description': 'Independent non-executive director, venture investor, and strategic advisor with 15+ years of executive leadership in banking, fintech, and consumer brands.',
+        'title': 'Anna Nikulina | Independent / Non-Executive Director, Venture Investor, Strategic Advisor',
+        'description': 'Independent / non-executive director, venture investor, and strategic advisor with 15+ years of executive leadership in banking, fintech, and consumer brands.',
         'brand': 'A<span>.</span> Nikulina',
         'nav': [('#experience', 'Track Record'), ('#services', 'Expertise'), ('#videos', 'Videos'), ('#contact', 'Contact')],
         'vd_source': 'youtube', 'vd_channel_url': YOUTUBE, 'vd_eyebrow': 'Videos',
         'vd_title': 'Conversations on <b>business</b>', 'vd_intro': 'Interviews with entrepreneurs and experts on my YouTube channel (mostly in Russian). Click any episode to play it right here.',
         'vd_more': 'Show all videos', 'vd_less': 'Show less', 'vd_channel': 'YouTube channel', 'vd_close': 'Close', 'vd_guest': 'Guest:', 'vd_latest': 'Latest episode',
-        'eyebrow': 'Independent Non-Executive Director · Venture Investor',
+        'eyebrow': 'Independent / Non-Executive Director · Venture Investor',
         'h1_1': 'Anna', 'h1_2': 'Nikulina',
         'lead': 'Founder, Chief Business Development Officer, and Strategic Advisor. I help business owners, investors, and founders make decisions that stand the test of time.',
         'cta_main': 'Get in Touch', 'cta_second': 'Telegram Channel',
@@ -147,21 +149,23 @@ CONTENT = {
         'stats': [('15+', 'years of executive leadership'), ('50+', 'branches managed'),
                   ('RUB 2T', 'in assets at a top-10 Russian bank'), ('10,000+', 'employees at the banks I worked for')],
         'xp_eyebrow': 'Track Record', 'xp_title': 'Experience that <b>delivers</b> results',
-        'xp_intro': 'Banking, company building, venture investing, and regulatory policy. I look at every business through three lenses at once: owner, investor, and risk manager.',
+        'xp_intro': '13+ years in banking, including top-10 Russian banks; companies built from launch to exit; a venture portfolio across global markets; and a hand in shaping Russia&#8217;s fintech regulation. I look at every business through three lenses at once: owner, investor, and risk manager.',
         'xp': [
-            ('Founder Experience: B2B&nbsp;|&nbsp;B2C', ['Co-owner of a Russian health &amp; beauty brand', 'Co-founder of a global tech startup', 'Founder of a Russian fintech startup']),
-            ('Banking', ['Former Managing Director at top-10 Russian banks (10,000+ employees, RUB 2 trillion in assets)', 'Built and managed multibillion-ruble corporate loan portfolios', 'Expert in credit risk and financial resilience assessment for businesses and projects, from SMBs to major industrial companies', 'Risk manager with a track record in crisis and turnaround management']),
-            ('Venture Investing', ['Venture investor in early-stage tech startups across global markets, with a successful exit', 'Guest expert and judge at startup pitch competitions']),
-            ('Regulatory Policy', ['Helped shape Russia&#8217;s crowdfunding law (Federal Law No.&nbsp;259-FZ on investment platforms) on behalf of the business community']),
-            ('Executive Leadership', ['15+ years in executive leadership (50+ branches, international teams)', 'Risk-based leadership and crisis management']),
+            ('Corporate Governance', ['Member of the Association of Independent Directors (AID), Russia', 'Independent Board Director program, AID, 2024']),
+            ('Banking', ['13+ years at PSB (Promsvyazbank), MDM Bank, Uralsib, and SDM Bank, including top-10 Russian banks (10,000+ employees, RUB 2 trillion in assets)', 'Corporate lending to large and mid-market companies; credit risk assessment and management', 'Oversaw and grew lending operations across 50+ branches', 'Built and managed multibillion-ruble corporate loan portfolios', 'Financial resilience assessment for businesses and projects, from SMBs to major industrial companies', 'Crisis and turnaround management']),
+            ('Founder Experience: B2B&nbsp;|&nbsp;B2C', ['Revenue-generating global B2B tech startup focused on MENA: a platform for business management and digital transformation. Co-founder and Chief Business Development Officer, now an Advisory Board Member', 'Own nutraceutical brand: Russia&#8217;s first anti-aging nutraceutical with a clinically significant concentration of elastin', 'Founder of a Russian fintech startup']),
+            ('Venture Investing', ['Venture investor in early-stage tech startups across global markets', 'Portfolio companies valued at over $1 billion', 'Co-investors in portfolio companies include Airbus, NASA, NEOM, and Barclays', 'Exit in the aerospace sector', 'Guest expert and judge at startup pitch competitions']),
+            ('Regulatory Policy', ['Helped shape Russia&#8217;s crowdfunding law on behalf of the business community, working with the Association of Investment Platforms and the Bank of Russia']),
+            ('Executive Leadership', ['15+ years in senior leadership roles, international teams', 'Risk-based management']),
         ],
         'band_eyebrow': 'Board Service', 'band_word': 'Advisory Board',
-        'band_text': 'Open to <b>independent non-executive director</b> and <b>advisory board</b> roles at privately held companies',
+        'band_sub': 'I bring to the board a deep understanding of risk and a founder&#8217;s perspective, from launching a business, including in global markets, all the way to exit. I ask the tough questions that protect a company from systemic mistakes.',
+        'band_text': 'Open to <b>independent / non-executive director</b> and <b>advisory board</b> roles at privately held companies',
         'sv_eyebrow': 'Expertise', 'sv_title': 'How I can <b>help</b>',
         'sv_intro': 'For those who value an outside perspective: independent, structured, and grounded in real-world experience.',
         'services': [
             ('chart', 'For Investors', ['Investment analysis and due diligence for projects at every stage', 'Risk and opportunity assessment']),
-            ('building', 'For Business Owners', ['Strategy consulting and identifying growth levers', 'Operations management', 'Serving as an independent non-executive director on private company boards']),
+            ('building', 'For Business Owners', ['Strategy consulting and identifying growth levers', 'Operations management', 'Serving as an independent / non-executive director on private company boards']),
             ('spark', 'For Startups &amp; Growing Companies', ['An investor&#8217;s perspective and mentorship', 'Review of positioning, business model, and growth prospects at any stage']),
         ],
         'ct_eyebrow': 'Contact', 'ct_title': 'For <b>professional</b> inquiries',
@@ -169,7 +173,7 @@ CONTENT = {
         'socials_title': 'Channels &amp; social media',
         'links': [('in', 'LinkedIn', 'LinkedIn: Anna Nikulina', LINKEDIN), ('tg', 'Telegram', 'Message on Telegram: @Anna_Niku', TG_PERSONAL),
                   ('tg', 'Telegram Channel', 'Telegram channel STRATEGY (in Russian)', TG_CHANNEL, 'channel'), ('yt', 'YouTube', 'YouTube channel STRATEGY (in Russian)', YOUTUBE), ('rt', 'RuTube', 'RuTube channel (in Russian)', RUTUBE)],
-        'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Independent Non-Executive Director · Venture Investor',
+        'footer_left': '© 2026 Anna Nikulina', 'footer_right': 'Independent / Non-Executive Director · Venture Investor',
     },
 }
 
@@ -316,6 +320,7 @@ def page(c):
     <div class="wrap">
       <div class="eyebrow reveal">{c['band_eyebrow']}</div>
       <p class="band-text reveal d1">{c['band_text']}</p>
+      <p class="band-sub reveal d2">{c['band_sub']}</p>
     </div>
   </section>
 
