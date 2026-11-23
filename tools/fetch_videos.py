@@ -89,6 +89,41 @@ def fetch_rutube():
     return videos
 
 
+THUMB_DIR = os.path.join(ROOT, 'assets', 'video-thumbs')
+
+
+def download(url, path):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=30) as r:
+        data = r.read()
+    if len(data) < 5000:        # YouTube serves a tiny placeholder when the HD cover does not exist
+        raise ValueError('placeholder')
+    with open(path, 'wb') as f:
+        f.write(data)
+
+
+def localize_thumbs(data):
+    """Store covers on our own server so the site does not depend on YouTube/RuTube CDNs."""
+    os.makedirs(THUMB_DIR, exist_ok=True)
+    for src, items in data.items():
+        for v in items:
+            if not v.get('thumb') or v.get('short'):
+                continue
+            name = '%s-%s.jpg' % (src, v['id'])
+            path = os.path.join(THUMB_DIR, name)
+            urls = [v['thumb']]
+            if 'i.ytimg.com' in v['thumb']:
+                urls.insert(0, v['thumb'].replace('hqdefault', 'maxresdefault'))
+            for u in urls:
+                try:
+                    download(u, path)
+                    v['thumb_local'] = '../assets/video-thumbs/' + name
+                    break
+                except Exception as e:
+                    log('thumb', name, 'failed from', u, e)
+    log('local thumbs:', sum(1 for items in data.values() for v in items if v.get('thumb_local')))
+
+
 def main():
     old = {'youtube': [], 'rutube': []}
     if os.path.exists(OUT):
@@ -100,6 +135,7 @@ def main():
             log(k, 'empty, keeping previous', len(old[k]))
             new[k] = old[k]
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    localize_thumbs(new)
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(new, f, ensure_ascii=False, indent=1)
     for k, v in new.items():

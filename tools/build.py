@@ -301,7 +301,7 @@ def page(c):
         '<span class="vcard-text">%s<span class="vcard-title">%s</span>%s</span></button></li>' % (
             ' is-featured' if i == 0 else '', ' is-extra' if i >= VISIBLE else '',
             html.escape(v['embed'], quote=True), html.escape(v['main'] + (' · ' + v['guest'] if v['guest'] else ''), quote=True),
-            thumb_img(v['thumb']) if v.get('thumb') else '',
+            thumb_img(v['thumb_local'] if v.get('thumb_local') and os.path.exists(os.path.join(ROOT, v['thumb_local'][3:])) else v['thumb']) if v.get('thumb') else '',
             ICONS['play'], ('<span class="vcard-badge">%s</span>' % c['vd_latest']) if i == 0 else '', html.escape(v['main']),
             ('<span class="vcard-guest">%s %s</span>' % (c['vd_guest'], html.escape(v['guest']))) if v['guest'] else '')
         for i, v in enumerate(vids))
