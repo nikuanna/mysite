@@ -154,9 +154,9 @@ CONTENT = {
             ('Управленческий опыт', ['15+ лет на руководящих позициях, международные команды', 'Риск-ориентированное управление']),
         ],
         'band_eyebrow': 'Советы директоров', 'band_word': 'Advisory Board',
-        'band_sub': 'Привношу в совет директоров глубокое понимание рисков и взгляд предпринимателя: от запуска бизнеса, в том числе на глобальных рынках, до экзита. Задаю неудобные вопросы, которые защищают компанию от системных&nbsp;ошибок.',
+        'band_sub': 'Глубокое понимание рисков и взгляд предпринимателя: от запуска бизнеса, в том числе на глобальных рынках, до экзита. Задаю неудобные вопросы, которые защищают компанию от системных&nbsp;ошибок.',
         'band_horizon': 'Венчурный опыт научил меня <b>смотреть за горизонт</b>: замечаю тренды и риски раньше рынка и помогаю бизнесу быть на&nbsp;шаг&nbsp;впереди.',
-        'band_text': 'Открыта к работе в <b>советах директоров</b> и <b>Advisory&nbsp;Board</b> частных компаний',
+        'band_text': 'Что я привношу в <b>совет директоров</b> и&nbsp;<b>Advisory&nbsp;Board</b>',
         'sv_eyebrow': 'Экспертиза', 'sv_title': 'Чем я могу быть <b>полезна</b>',
         'sv_intro': 'Работаю с теми, кому важен взгляд со стороны: независимый, системный и основанный на реальном опыте.',
         'services': [
@@ -206,9 +206,9 @@ CONTENT = {
             ('Executive Leadership', ['15+ years in senior leadership roles, international teams', 'Risk-based management']),
         ],
         'band_eyebrow': 'Board Service', 'band_word': 'Advisory Board',
-        'band_sub': 'I bring to the board a deep understanding of risk and a founder&#8217;s perspective, from launching a business, including in global markets, all the way to exit. I ask the tough questions that protect a company from systemic&nbsp;mistakes.',
+        'band_sub': 'A deep understanding of risk and a founder&#8217;s perspective, from launching a business, including in global markets, all the way to exit. I ask the tough questions that protect a company from systemic&nbsp;mistakes.',
         'band_horizon': 'Venture investing has trained me to <b>look beyond the horizon</b>: I spot trends and risks before the market does and help businesses stay one step&nbsp;ahead.',
-        'band_text': 'Open to <b>non-executive director</b> and <b>advisory&nbsp;board</b> roles at privately held companies',
+        'band_text': 'What I bring to the <b>boardroom</b> and <b>advisory&nbsp;boards</b>',
         'sv_eyebrow': 'Expertise', 'sv_title': 'How I can <b>help</b>',
         'sv_intro': 'For those who value an outside perspective: independent, structured, and grounded in real-world experience.',
         'services': [
