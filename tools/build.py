@@ -154,7 +154,8 @@ CONTENT = {
             ('Управленческий опыт', ['15+ лет на руководящих позициях, международные команды', 'Риск-ориентированное управление']),
         ],
         'band_eyebrow': 'Советы директоров', 'band_word': 'Advisory Board',
-        'band_sub': 'Привношу в совет директоров глубокое понимание рисков и взгляд предпринимателя: от запуска бизнеса, в том числе на глобальных рынках, до экзита. Задаю неудобные вопросы, которые защищают компанию от системных ошибок.',
+        'band_sub': 'Привношу в совет директоров глубокое понимание рисков и взгляд предпринимателя: от запуска бизнеса, в том числе на глобальных рынках, до экзита. Задаю неудобные вопросы, которые защищают компанию от системных&nbsp;ошибок.',
+        'band_horizon': 'Венчурный опыт научил меня <b>смотреть за горизонт</b>: замечаю тренды и риски раньше рынка и помогаю совету думать на годы&nbsp;вперёд.',
         'band_text': 'Открыта к работе в <b>советах директоров</b> и <b>Advisory Board</b> частных компаний',
         'sv_eyebrow': 'Экспертиза', 'sv_title': 'Чем я могу быть <b>полезна</b>',
         'sv_intro': 'Работаю с теми, кому важен взгляд со стороны: независимый, системный и основанный на реальном опыте.',
@@ -205,7 +206,8 @@ CONTENT = {
             ('Executive Leadership', ['15+ years in senior leadership roles, international teams', 'Risk-based management']),
         ],
         'band_eyebrow': 'Board Service', 'band_word': 'Advisory Board',
-        'band_sub': 'I bring to the board a deep understanding of risk and a founder&#8217;s perspective, from launching a business, including in global markets, all the way to exit. I ask the tough questions that protect a company from systemic mistakes.',
+        'band_sub': 'I bring to the board a deep understanding of risk and a founder&#8217;s perspective, from launching a business, including in global markets, all the way to exit. I ask the tough questions that protect a company from systemic&nbsp;mistakes.',
+        'band_horizon': 'Venture investing has trained me to <b>look beyond the horizon</b>: I spot trends and risks before the market does and help boards think years&nbsp;ahead.',
         'band_text': 'Open to <b>non-executive director</b> and <b>advisory board</b> roles at privately held companies',
         'sv_eyebrow': 'Expertise', 'sv_title': 'How I can <b>help</b>',
         'sv_intro': 'For those who value an outside perspective: independent, structured, and grounded in real-world experience.',
@@ -423,6 +425,7 @@ def page(c):
       <div class="eyebrow reveal">{c['band_eyebrow']}</div>
       <p class="band-text reveal d1">{c['band_text']}</p>
       <p class="band-sub reveal d2">{c['band_sub']}</p>
+      <p class="band-horizon reveal d3">{c['band_horizon']}</p>
     </div>
   </section>
 
@@ -488,7 +491,7 @@ def plain(t):
 
 def llms_section(c):
     out = ['## ' + ('Русская версия' if c['lang'] == 'ru' else 'English version'), '',
-           '- Page: ' + c['url'], '- ' + plain(c['eyebrow']), '- ' + plain(c['lead']), '- ' + plain(c['band_sub']), '']
+           '- Page: ' + c['url'], '- ' + plain(c['eyebrow']), '- ' + plain(c['lead']), '- ' + plain(c['band_sub']), '- ' + plain(c['band_horizon']), '']
     for title, items in c['xp']:
         out.append('### ' + plain(title))
         out += ['- ' + plain(x) for x in items]
