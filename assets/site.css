@@ -123,7 +123,7 @@ ul{padding:0;list-style:none}
 .band-word-wrap{position:absolute;inset:0;z-index:-1;will-change:transform}
 .band .eyebrow{justify-content:center}
 .band .eyebrow::after{content:"";width:28px;height:1px;background:currentColor}
-.band-text{font-weight:300;font-size:clamp(28px,3.5vw,46px);line-height:1.14;letter-spacing:-.03em;max-width:860px;margin:26px auto 0}
+.band-text{font-weight:300;font-size:clamp(25px,3vw,38px);line-height:1.18;letter-spacing:-.03em;max-width:860px;margin:26px auto 0}
 .band-text b{font-weight:500;color:var(--blush)}
 
 /* ---------- Services ---------- */
@@ -311,6 +311,6 @@ section[id]{scroll-margin-top:72px}
 .band-sub{max-width:720px;margin:32px auto 0;font-size:clamp(16px,1.35vw,19px);line-height:1.65;font-weight:300;color:var(--on-dark-muted)}
 .hero .eyebrow{align-items:flex-start}
 .hero .eyebrow::before{flex:none;margin-top:.72em}
-.services .h2{font-size:clamp(32px,3.9vw,50px);line-height:1.08}
+.services .h2{font-size:clamp(28px,3.2vw,42px);line-height:1.1}
 .band-horizon{max-width:720px;margin:22px auto 0;font-size:clamp(17px,1.45vw,21px);line-height:1.55;font-weight:400;color:var(--on-dark)}
 .band-horizon b{font-weight:500;color:var(--blush)}
